@@ -9,16 +9,16 @@ Animations based on server data
 
 
 
-## TECH
+### TECH
 React
 Firebase
 CSS Animation
 
 
-## STEPS
+### STEPS
 
 
 
 
-## BONUS
+### BONUS
 Synesthesia visualizer
