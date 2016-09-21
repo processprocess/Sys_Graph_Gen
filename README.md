@@ -36,12 +36,15 @@
 
 ## BONUS
 **Synesthesia Sound Visualizer**
+
 This project will blend sound and vision to help users gain an understanding of the condition of synesthesia.
 * set timescale of elements for sense of composition
 * set sound for each element
 
 **Weather Visualizer**
+
 This project will animate the condition of weather throughout the day.
+
 This will help people understand not only what the current condition is, but also how the weather will develop throughout the day.  
 * animation of weather throughout day
 * generate 12 second animation. Each second will reflect an hour of the day
