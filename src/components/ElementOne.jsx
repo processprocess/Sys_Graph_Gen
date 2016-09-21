@@ -21,8 +21,20 @@ export default class ElementOne extends React.Component {
   //          .then({})
   // };
 
+  testLog() {
+    console.log('testinglog')
+  };
+
   updateElementContent(valuePassedIn){
     this.setState({ elementContent: valuePassedIn });
+  }
+
+  // updateElementStyle(valuePassed){
+  //   this.setState({ elementBackgroundColor: valuePassed });
+  // }
+
+  updateBackgroundColor(valuePassed) {
+    this.setState({ elementBackgroundColor: valuePassed });
   }
 
   render() {

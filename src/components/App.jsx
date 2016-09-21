@@ -13,6 +13,10 @@ export default class App extends React.Component {
     };
   }
 
+  // testLog() {
+  //   console.log('testing')
+  // }
+
   render() {
     return (
       <div>
