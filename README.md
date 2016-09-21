@@ -18,7 +18,7 @@
 **Phase 2 - Modifying React Element**
 * create functions that modify behavior of element
 * behaviors will be saved in the state of element
-* state of element can be saved to Firebase
+* state of elements will be saved to firebase
 * element can be re-loaded to page
 * element can be deleted from server
 
