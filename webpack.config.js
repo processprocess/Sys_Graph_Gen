@@ -6,7 +6,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'src', 'static'),
     inline: true,
-    port: 8080,
+    port: 6060,
   },
   output: {
     path: path.join(__dirname, 'src', 'static', 'js'),

@@ -1,5 +1,5 @@
 import React from 'react';
-// import request from 'superagent';
+import request from 'superagent';
 
 // const propTypes = {
   // tagLine: React.PropTypes.string,
@@ -9,32 +9,51 @@ export default class ElementOne extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      elementContent: 'default',
       elementBackgroundColor: 'white',
     };
+    // this.updateBackgroundColor = this.updateBackgroundColor.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   };
 
-  // httpSendRequest(data) {
-  //   const url = 'https://elementupdate-941b4.firebaseio.com/ElementInfo.json';
-  //   request.post(url)
-  //          .send
-  //          .then({})
-  // };
+  // componentDidMount() {
+  //   this.httpGetRequest();
+  // }
 
-  testLog() {
-    console.log('testinglog')
-  };
-
-  updateElementContent(valuePassedIn){
-    this.setState({ elementContent: valuePassedIn });
-  }
+  //button that sends current state of object
 
   // updateElementStyle(valuePassed){
   //   this.setState({ elementBackgroundColor: valuePassed });
   // }
 
-  updateBackgroundColor(valuePassed) {
-    this.setState({ elementBackgroundColor: valuePassed });
+  //rgb sliders for colors
+  //key in time cycle for animation
+
+  //key in one value
+  //animation cicles between keyed value and set value
+  //key in second value
+  //animation cicles between both keyed values
+
+
+
+  // updateBackgroundColor(valuePassed) {
+  //   this.setState({ elementBackgroundColor: valuePassed });
+  // }
+
+  // updateBackgroundColor() {
+  //   console.log('testing it')
+  //   let randomColor = '#'+ Math.round(0xffffff * Math.random()).toString(16);
+  //   this.setState({ elementBackgroundColor: randomColor });
+  // }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    // this.props.weatherData(this.state.input);
+  }
+  handleChange(e) {
+    this.setState({
+      elementBackgroundColor: e.target.value,
+    });
   }
 
   render() {
@@ -48,13 +67,28 @@ export default class ElementOne extends React.Component {
       <div>
         <h2>{this.props.testMessage}</h2>
         <p>Test from Element One</p>
-        <h3>{this.state.elementContent}</h3>
         <div style={divStyle}></div>
+        {/* <button onClick={this.updateBackgroundColor}>change color</button> */}
+
+
+        <form onSubmit={this.handleSubmit} >
+          <input type="text" onChange={this.handleChange} />
+          <div>
+            {/* <button
+              type="submit"
+            >change color
+            </button> */}
+          </div>
+        </form>
+
+
       </div>
     );
   }
 }
 
 
+// $r.updateBackgroundColor('purple')
+// $r.httpPublishStyle({ firstName: "Max", lastName: "Mars"})
 
 // ElementOne.propTypes = propTypes;

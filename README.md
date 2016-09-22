@@ -38,7 +38,7 @@
 **Synesthesia Sound Visualizer**
 This project will blend sound and vision to help users gain an understanding of the condition of synesthesia.
 * set timescale of elements for sense of composition
-* set sound for each element
+* collaborate with friend that experiences synesthesia to set sound for each element
 
 **Weather Visualizer**
 This project will animate the condition of weather throughout the day.
@@ -46,3 +46,70 @@ This will help people understand not only what the current condition is, but als
 * animation of weather throughout day
 * generate 12 second animation. Each second will reflect an hour of the day
 * animations will blend together to give sense of time
+
+
+
+
+
+
+
+
+Different types of animations
+
+animations controlled through CSS
+
+controller on page
+
+all elements are saved in props
+
+props can be saved to a database
+
+page can be reloaded from different animations set in props
+
+props are controlled through GUI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
