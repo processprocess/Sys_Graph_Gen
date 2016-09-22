@@ -9,7 +9,7 @@ export default class ElementOne extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      elementBackgroundColor: 'white',
+      elementBackgroundColor: 'blue',
     };
     // this.updateBackgroundColor = this.updateBackgroundColor.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -46,6 +46,8 @@ export default class ElementOne extends React.Component {
   //   this.setState({ elementBackgroundColor: randomColor });
   // }
 
+  // animation reloads after cycle
+
   handleSubmit(e) {
     e.preventDefault();
     // this.props.weatherData(this.state.input);
@@ -55,30 +57,55 @@ export default class ElementOne extends React.Component {
       elementBackgroundColor: e.target.value,
     });
   }
+  // componentDidMount() {
+  //   setInterval(function(){ console.log("Hello"); }, 2000);
+  // }
+// this.state.elementBackgroundColor
 
   render() {
-    let divStyle = {
-      backgroundColor: this.state.elementBackgroundColor,
-      width: '100px',
-      height: '100px',
-      display: 'inline-block'
-    }
+    // let color = 'red';
+    // setInterval(function(){
+    // setInterval(function(){ console.log("Hello"); }, 2000);
+    let color = this.state.elementBackgroundColor;
+      setInterval(function(){
+        console.log(color)
+        let colorLoop = document.styleSheets[document.styleSheets.length - 1];
+        colorLoop.insertRule(
+          "@keyframes " + 'colorLoop' +
+          " { 0% {background-color:" + color + ";} 100% {background-color:red;} }",0 );
+      }, 2000);
+        // colorLoop.insertRule(
+        //   "@keyframes " + 'colorLoop' +
+        //   " { 0% {background-color:" + this.state.elementBackgroundColor + ";} 100% {background-color:red;} }",0 );
+      let divStyle = {
+        width: '100px',
+        height: '100px',
+        display: 'inline-block',
+        animationName: 'colorLoop',
+        borderWidth: "10px",
+        borderStyle: "solid",
+        borderColor: color,
+        // backgroundColor: color,
+        // backgroundColor: this.state.elementBackgroundColor,
+        animationDuration: '1s',
+        animationDirection: 'alternate-reverse',
+        animationIterationCount: 'infinite',
+      }
+    // }, 2000);
     return (
       <div>
         <h2>{this.props.testMessage}</h2>
         <p>Test from Element One</p>
         <div style={divStyle}></div>
         {/* <button onClick={this.updateBackgroundColor}>change color</button> */}
-
-
         <form onSubmit={this.handleSubmit} >
           <input type="text" onChange={this.handleChange} />
-          <div>
-            {/* <button
+          {/* <div>
+            <button
               type="submit"
             >change color
-            </button> */}
-          </div>
+            </button>
+          </div> */}
         </form>
 
 
