@@ -18,6 +18,9 @@ class PostList extends React.Component {
       );
     });
     return (
+
+      //top controller for each
+
       <ul>
         {postElements}
       </ul>

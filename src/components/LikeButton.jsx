@@ -13,7 +13,7 @@ export default class LikeButton extends React.Component {
     return (
       <div>
       {/* <div className="like-button"> */}
-        <button onClick={this.props.handleLikeClick} >Like</button>
+        {/* <button onClick={this.props.handleLikeClick} >Like</button> */}
         <p>{this.props.likeCount}</p>
         {/* <ObjectRow /> */}
         {lineElements}

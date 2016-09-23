@@ -19,9 +19,9 @@ class App extends React.Component {
   }
   httpGetPosts() {
     const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
-    request.get(url)  // go to API get
-           .then((response) => {  // When the response is received...
-             const postsData = response.body;  // Grab the data
+    request.get(url)
+           .then((response) => {
+             const postsData = response.body;
              let posts = [];
              if (postsData) {
                posts = Object.keys(postsData).map((id) => {
@@ -40,9 +40,7 @@ class App extends React.Component {
   handlePublish({ id, content, ElBackgroundColor, likeCount }) {
     if (id) {
       this.httpUpdatePost({ id, content, ElBackgroundColor, likeCount });
-      // this.setState({ saved: true })
     } else {
-      // this.setState({ saved: true })
       this.httpPublishPost({ content, ElBackgroundColor, likeCount });
     }
   }
@@ -75,8 +73,8 @@ class App extends React.Component {
         <div id="header">
           <button id="newPostButton" onClick={this.handlePublish}>new post</button>
         </div>
-        <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />
         {/* <Post handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} /> */}
+        <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />
       </div>
     );
   }
