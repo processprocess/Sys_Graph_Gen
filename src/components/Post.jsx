@@ -86,18 +86,24 @@ class Post extends React.Component {
 
       <div className='saved'>
       {/* <div style={divStyle}></div> */}
-      <button onClick={this.handleLikeClick} >Like</button>
-      <button onClick={this.handleDisLikeClick} >DisLike</button>
-      {/* {activeButtons} */}
-      <button onClick={this.handleDeleteClick}>x</button>
-      <form onSubmit={this.handleSubmit} >
-        <input type="text" onChange={this.handleEditOfElBackgroundColor} />
-      </form>
-      <LikeButton
-        ElBackgroundColor={this.props.ElBackgroundColor}
-        handleLikeClick={this.handleLikeClick}
-        likeCount={this.props.likeCount}
-      />
+
+        <div className="postControls">
+          <button onClick={this.handleLikeClick} >+</button>
+          <button onClick={this.handleDisLikeClick} >-</button>
+          {/* {activeButtons} */}
+          <button onClick={this.handleDeleteClick}>x</button>
+          <form onSubmit={this.handleSubmit} >
+            <input type="text" onChange={this.handleEditOfElBackgroundColor} />
+          </form>
+        </div>
+
+        {/* <div className="theLines"> */}
+        <LikeButton
+          ElBackgroundColor={this.props.ElBackgroundColor}
+          handleLikeClick={this.handleLikeClick}
+          likeCount={this.props.likeCount}
+        />
+        {/* </div> */}
 
       </div>
     );

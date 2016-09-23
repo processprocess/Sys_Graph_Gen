@@ -11,7 +11,8 @@ export default class LikeButton extends React.Component {
     }
 
     return (
-      <div>
+      // <div>
+      <div className="theLines">
       {/* <div className="like-button"> */}
         {/* <button onClick={this.props.handleLikeClick} >Like</button> */}
         <p>{this.props.likeCount}</p>
