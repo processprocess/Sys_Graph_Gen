@@ -92,8 +92,9 @@ class Post extends React.Component {
           <button onClick={this.handleDisLikeClick} >-</button>
           {/* {activeButtons} */}
           <button onClick={this.handleDeleteClick}>x</button>
-          <form onSubmit={this.handleSubmit} >
-            <input type="text" onChange={this.handleEditOfElBackgroundColor} />
+          <form className="changeProperty" onSubmit={this.handleSubmit} >
+            <input className="editElementInput"type="text" onChange={this.handleEditOfElBackgroundColor} />
+            {/* <input type="text" value={this.props.ElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} /> */}
           </form>
         </div>
 

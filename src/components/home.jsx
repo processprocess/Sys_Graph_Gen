@@ -5,7 +5,7 @@ import React from 'react';
 const Home = () => {
   return (
     <div>
-      <h1>Welcome to the <mark>HOME</mark> component, this component is <mark><b>NOT</b></mark> protected</h1>
+      {/* <p>systematic graphic generator</p> */}
     </div>
   );
 }

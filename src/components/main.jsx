@@ -40,17 +40,17 @@ class Main extends Component {
   loggedInLinks() {
     if(!this.state.loggedIn){
       return (
-        <div>
-          <Link to="/login" id="login">Login /</Link>
+        <div id="enterLinks">
+          <Link to="/login" id="login">Login</Link>
           <Link to="/register" id="register">Register</Link>
         </div>
       )
     } else {
       return (
-        <div id="sign-out">
+        <div >
           {/* <p>test</p> */}
-          <p>{this.props.params.email}</p>
-          <a href="#" onClick={this.signOut}>Sign Out</a>
+          {/* <p>{this.props.params.email}</p> */}
+          <a href="#" id="sign-out" onClick={this.signOut}>Sign Out</a>
         </div>
       );
     }
@@ -60,7 +60,8 @@ class Main extends Component {
     return (
       <div>
         <div id="main-nav">
-          <h1>MAIN COMPONENT</h1>
+          {/* <h1 id="mainHeader">SYS/GRAF/GEN</h1> */}
+          {/* <p>systematic graphic generator</p> */}
           {
             this.loggedInLinks()
           }

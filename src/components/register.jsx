@@ -43,7 +43,6 @@ class Register extends Component {
     return (
       <div>
         <div id="register-form">
-          <p>register page</p>
           <div>
             <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
