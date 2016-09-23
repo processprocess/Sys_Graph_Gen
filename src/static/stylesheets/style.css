@@ -1,10 +1,92 @@
 * {
 	box-sizing: border-box;
-	font-family: helvetica, sans-serif;
-	font-weight: lighter;
 }
 
 body {
 	background-color:black;
+	font-family: helvetica, sans-serif;
+	font-weight: lighter;
+	color:white;
+	margin: 0px;
+	padding: 0px;
+}
+
+#header {
+	height:30px;
+	/*background-color: red;*/
+	/*border: .5px solid grey;*/
+}
+
+#newPostButton {
+	padding: 0px;
+  margin: 0px;
+  /*text-align: center;*/
+  display: inline-block;
+  left:50%;
+	top:5px;
+  position:absolute;
+  width:75px;
+	height: 10px;
+  margin-left:-54px;
+}
+
+.deleteButton{
+	padding: 0px;
+	margin: 0px;
+	/*text-align: center;*/
+	/*display: inline-block;*/
+	/*left:50%;*/
+	/*top:5px;*/
+	position:absolute;
+	width:20px;
+	height: 10px;
+	/*margin-left:-54px;*/
+}
+
+.hidden {
+	display: none;
+}
+
+form.post-display {
+	width: 90%;
+	display: inline-block;
+}
+
+ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+input {
+	font-size: 1.5em;
+}
+
+form.post-display input[name="author"] {
+	width: 10%;
+	display: inline-block;
+}
+
+form.post-display input[name="content"] {
+	width: 80%;
+	display: inline-block;
+}
+
+div.like-button {
+	display: inline-block;
+}
+
+
+.not-saved input {
+	background-color: black;
 	color: white;
+}
+
+.saved input {
+	background-color: transparent;
+	color: white;
+}
+
+.active-buttons {
+	display: inline-block;
 }
