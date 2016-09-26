@@ -3,7 +3,7 @@ import React from 'react';
 export default class ObjectRow extends React.Component {
 
   render() {
-    console.log(this.props.ElBackgroundColor)
+    // console.log(this.props.ElBackgroundColor)
 
 
     let rotateAnimation = document.styleSheets[document.styleSheets.length - 1];
@@ -12,9 +12,12 @@ export default class ObjectRow extends React.Component {
         " { 0% {transform:rotate(0deg);} 100% {transform:rotate(360deg);} }",0 );
         // " { 0% {background-color:" + color + ";} 100% {background-color:red;} }",0 );
 
+
+
     let divStyle = {
       animationName: 'rotateAnimation',
-      animationDuration: '20s',
+      animationDuration: this.props.likeCount + 's',
+      // animationDuration: '20s',
       // animationDirection: 'linear',
       animationTimingFunction: 'linear',
       animationIterationCount: 'infinite',

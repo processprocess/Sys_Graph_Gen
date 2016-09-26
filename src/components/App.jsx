@@ -2,6 +2,7 @@ import React from 'react';
 import request from 'superagent';
 import PostList from './PostList.jsx';
 import Post from './Post.jsx';
+import firebase from '../../firebase.config.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +17,32 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.httpGetPosts();
+    // setTimeout(() => {
+      this.getUser()
+    // }, 300);
   }
+
+  getUser() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({
+            currentUser: user.uid,
+          });
+          console.log(this.state.currentUser);
+        }
+      });
+  }
+
   httpGetPosts() {
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
+    // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts.json`;
     const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.get(url)
            .then((response) => {
              const postsData = response.body;
+
+
+
              let posts = [];
              if (postsData) {
                posts = Object.keys(postsData).map((id) => {
@@ -45,6 +66,8 @@ class App extends React.Component {
     }
   }
   httpDeletePost(id) {
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
+    // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
     const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.del(url)
            .then(() => {
@@ -52,6 +75,8 @@ class App extends React.Component {
            });
   }
   httpUpdatePost({ id, content, ElBackgroundColor, likeCount }) {
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
+    // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
     const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.patch(url)
            .send({ content, ElBackgroundColor, likeCount })
@@ -60,6 +85,7 @@ class App extends React.Component {
            });
   }
   httpPublishPost({ content, ElBackgroundColor }) {
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
     const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.post(url)
            .send({ content, ElBackgroundColor, likeCount: 0 })

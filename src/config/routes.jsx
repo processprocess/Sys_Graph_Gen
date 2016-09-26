@@ -12,12 +12,13 @@ const Routes = () => {
     <Router history={hashHistory}>
       {/* <Route path="/" component={Home}> */}
       <Route path="/" component={Main}>
-        <IndexRoute path="/"/>
+        {/* <IndexRoute path="/"/> */}
         {/* <IndexRoute component={Login}/> */}
-        <Route path="register" component={Register} />
+        {/* <Route path="register" component={Register} /> */}
+        <IndexRoute component={Home}/>
         <Route path="login" component={Login} />
         <Route path="App" component={App} />
-        {/* <Route path="App" component={App} onEnter={requireAuth}/> */}
+        <Route path="App" component={App} onEnter={requireAuth}/>
       </Route>
     </Router>
   );

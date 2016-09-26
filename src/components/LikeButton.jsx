@@ -4,10 +4,15 @@ import ObjectRow from './ObjectRow.jsx';
 export default class LikeButton extends React.Component {
 
   render() {
-    console.log(this.props.ElBackgroundColor)
+    // console.log(this.props.ElBackgroundColor)
     var lineElements = [];
     for (var i=0; i < this.props.likeCount; i++) {
-        lineElements.push(<ObjectRow key={i} ElBackgroundColor={this.props.ElBackgroundColor}/>);
+        lineElements.push(
+          <ObjectRow
+            key={i}
+            ElBackgroundColor={this.props.ElBackgroundColor}
+            likeCount={this.props.likeCount}
+          />);
     }
 
     return (

@@ -18,16 +18,42 @@ class Main extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.params.email)
+    // console.log(user)
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((user) => {
         this.setState({
           loggedIn: (user !== null),
 
+
         });
+        // this.getUser();
       });
     }, 200);
+
   }
+
+
+  // getUser() {
+  //   // console.log('test')
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({
+  //         currentUser: user.uid,
+  //       });
+  //       console.log(user.uid);
+  //     }
+  //   });
+
+    // var ref = firebase.auth("https://crudtest-342a3.firebaseio.com");
+    // var authData = ref.getAuth();
+    // if (authData) {
+    //   console.log("Authenticated user with uid:", authData.uid);
+    // }
+
+    // let theUser = firebase.auth().currentUser.uid
+    // console.log(theUser);
+    // console.log('test');
+  // }
 
   signOut() {
     firebase.auth()

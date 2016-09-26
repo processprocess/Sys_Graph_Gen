@@ -88,6 +88,7 @@ class Post extends React.Component {
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
+          <p>test</p>
           <button onClick={this.handleLikeClick} >+</button>
           <button onClick={this.handleDisLikeClick} >-</button>
           {/* {activeButtons} */}
