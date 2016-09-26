@@ -11,9 +11,11 @@ export default class LineButton extends React.Component {
           <ObjectRow
             key={i}
             ElBackgroundColor={this.props.ElBackgroundColor}
+            ElBorderWidth={this.props.ElBorderWidth}
             LineCount={this.props.LineCount}
           />);
     }
+
 
     let rotateAnimation = document.styleSheets[document.styleSheets.length - 1];
         rotateAnimation.insertRule(
@@ -22,7 +24,7 @@ export default class LineButton extends React.Component {
 
     let divStyle = {
       animationName: 'rotateAnimation',
-      animationDuration: this.props.LineCount + 's',
+      animationDuration: this.props.ElAnimationDuration + 's',
       // animationDuration: '20s',
       // animationDirection: 'linear',
       animationTimingFunction: 'linear',

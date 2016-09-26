@@ -11,6 +11,8 @@ class PostList extends React.Component {
             handlePublish={this.props.handlePublish}
             content={post.content}
             ElBackgroundColor={post.ElBackgroundColor}
+            ElAnimationDuration={post.ElAnimationDuration}
+            ElBorderWidth={post.ElBorderWidth}
             LineCount={post.LineCount}
             id={post.id}
           />
@@ -18,6 +20,8 @@ class PostList extends React.Component {
       );
     });
     return (
+
+
 
       //top controller for each
 

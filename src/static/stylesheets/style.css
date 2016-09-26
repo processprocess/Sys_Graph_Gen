@@ -33,6 +33,7 @@ body {
   position:absolute;
   width:75px;
 	height: 10px;
+			z-index: 2;
   /*margin-left:-54px;*/
 }
 

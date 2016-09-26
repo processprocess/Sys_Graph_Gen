@@ -50,6 +50,8 @@ class App extends React.Component {
                  return {
                    id,
                    ElBackgroundColor: individualPostData.ElBackgroundColor,
+                   ElBorderWidth: individualPostData.ElBorderWidth,
+                   ElAnimationDuration: individualPostData.ElAnimationDuration,
                    content: individualPostData.content,
                    LineCount: individualPostData.LineCount,
                  };
@@ -58,11 +60,11 @@ class App extends React.Component {
              this.setState({ posts });
            });
   }
-  handlePublish({ id, content, ElBackgroundColor, LineCount }) {
+  handlePublish({ id, content, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount }) {
     if (id) {
-      this.httpUpdatePost({ id, content, ElBackgroundColor, LineCount });
+      this.httpUpdatePost({ id, content, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount });
     } else {
-      this.httpPublishPost({ content, ElBackgroundColor, LineCount });
+      this.httpPublishPost({ content, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount });
     }
   }
   httpDeletePost(id) {
@@ -74,21 +76,21 @@ class App extends React.Component {
              this.httpGetPosts();
            });
   }
-  httpUpdatePost({ id, content, ElBackgroundColor, LineCount }) {
+  httpUpdatePost({ id, content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration, LineCount }) {
     const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.patch(url)
-           .send({ content, ElBackgroundColor, LineCount })
+           .send({ content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration, LineCount })
            .then(() => {
              this.httpGetPosts();
            });
   }
-  httpPublishPost({ content, ElBackgroundColor }) {
+  httpPublishPost({ content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration }) {
     const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
     // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.post(url)
-           .send({ content, ElBackgroundColor, LineCount: 0 })
+           .send({ content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration, LineCount: 0 })
            .then(() => {
              this.httpGetPosts();
            });

@@ -4,12 +4,15 @@ export default class ObjectRow extends React.Component {
 
   render() {
 
+
+
     let divStyle = {
       width: '100%',
       display: 'inline-block',
       borderStyle: 'solid',
-      borderWidth: this.props.LineCount + 'px',
+      // ElBorderWidth: this.props.ElBorderWidth + 'px',
       borderColor: this.props.ElBackgroundColor,
+      borderWidth: this.props.ElBorderWidth + 'px',
     }
 
     return (
