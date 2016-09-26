@@ -7,21 +7,40 @@ import Login from '../components/login.jsx';
 import App from '../components/App.jsx';
 import requireAuth from '../utils/auth.js';
 
+
+
+
 const Routes = () => {
   return (
     <Router history={hashHistory}>
-      {/* <Route path="/" component={Home}> */}
       <Route path="/" component={Main}>
-        {/* <IndexRoute path="/"/> */}
-        {/* <IndexRoute component={Login}/> */}
-        {/* <Route path="register" component={Register} /> */}
         <IndexRoute component={Home}/>
+        <Route path="register" component={Register} />
         <Route path="login" component={Login} />
         <Route path="App" component={App} />
-        <Route path="App" component={App} onEnter={requireAuth}/>
+        {/* <Route path="App" component={App} onEnter={requireAuth}/> */}
       </Route>
     </Router>
   );
 }
+
+
+
+// const Routes = () => {
+//   return (
+//     <Router history={hashHistory}>
+//       {/* <Route path="/" component={Home}> */}
+//       <Route path="/" component={Main}>
+//         {/* <IndexRoute path="/"/> */}
+//         {/* <IndexRoute component={Login}/> */}
+//         <IndexRoute component={Home}/>
+//         <Route path="register" component={Register} />
+//         <Route path="login" component={Login} />
+//         {/* <Route path="App" component={App} /> */}
+//         <Route path="App" component={App} onEnter={requireAuth}/>
+//       </Route>
+//     </Router>
+//   );
+// }
 
 export default Routes;

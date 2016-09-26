@@ -5,7 +5,7 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      localElBackgroundColor: this.props.ElBackgroundColor || '',
+      localElBackgroundColor: this.props.ElBackgroundColor || 'white',
       localContent: this.props.content || '',
     };
     this.handleEditOfElBackgroundColor = this.handleEditOfElBackgroundColor.bind(this);
@@ -70,31 +70,19 @@ class Post extends React.Component {
   }
 
   render() {
-
-      // let divStyle = {
-      //   width: '25px',
-      //   height: '25px',
-      //   display: 'inline-block',
-      //   animationName: 'colorLoop',
-      //   backgroundColor: this.props.ElBackgroundColor,
-      //   animationDuration: '1s',
-      //   animationDirection: 'alternate-reverse',
-      //   animationIterationCount: 'infinite',
-      // }
-
     return (
 
       <div className='saved'>
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
-          <p>test</p>
+          {this.props.likeCount}
           <button onClick={this.handleLikeClick} >+</button>
           <button onClick={this.handleDisLikeClick} >-</button>
           {/* {activeButtons} */}
           <button onClick={this.handleDeleteClick}>x</button>
           <form className="changeProperty" onSubmit={this.handleSubmit} >
-            <input className="editElementInput"type="text" onChange={this.handleEditOfElBackgroundColor} />
+            <input className="editElementInput" type="text" placeholder={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} />
             {/* <input type="text" value={this.props.ElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} /> */}
           </form>
         </div>

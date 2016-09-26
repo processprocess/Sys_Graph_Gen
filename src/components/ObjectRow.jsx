@@ -25,7 +25,7 @@ export default class ObjectRow extends React.Component {
       width: '100%',
       display: 'inline-block',
       borderStyle: 'solid',
-      borderWidth: '1px',
+      borderWidth: this.props.likeCount + 'px',
       borderColor: this.props.ElBackgroundColor,
     }
 

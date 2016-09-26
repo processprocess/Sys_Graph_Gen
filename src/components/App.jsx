@@ -16,10 +16,10 @@ class App extends React.Component {
     this.httpDeletePost = this.httpDeletePost.bind(this);
   }
   componentDidMount() {
-    this.httpGetPosts();
-    // setTimeout(() => {
-      this.getUser()
-    // }, 300);
+    this.getUser()
+    setTimeout(() => {
+      this.httpGetPosts();
+    }, 300);
   }
 
   getUser() {
@@ -34,9 +34,9 @@ class App extends React.Component {
   }
 
   httpGetPosts() {
-    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
+    const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts.json`;
-    const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
+    // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.get(url)
            .then((response) => {
              const postsData = response.body;
@@ -66,18 +66,18 @@ class App extends React.Component {
     }
   }
   httpDeletePost(id) {
-    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
+    const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
-    const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.del(url)
            .then(() => {
              this.httpGetPosts();
            });
   }
   httpUpdatePost({ id, content, ElBackgroundColor, likeCount }) {
-    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
+    const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
-    const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
+    // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.patch(url)
            .send({ content, ElBackgroundColor, likeCount })
            .then(() => {
@@ -85,8 +85,8 @@ class App extends React.Component {
            });
   }
   httpPublishPost({ content, ElBackgroundColor }) {
-    // const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
-    const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
+    const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
+    // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.post(url)
            .send({ content, ElBackgroundColor, likeCount: 0 })
            .then(() => {
@@ -118,3 +118,27 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+
+
+//background color
+//set speed
+//set width
+//make background say it's default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

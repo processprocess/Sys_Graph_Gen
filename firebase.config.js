@@ -1,11 +1,11 @@
 const firebase = require('firebase');
 
-var config = {
-  apiKey: "AIzaSyB1M6dsGqqzw65_dh8OJsLJLe1WdNhCRYI",
-  authDomain: "authpractice-de0bd.firebaseapp.com",
-  databaseURL: "https://authpractice-de0bd.firebaseio.com",
-  storageBucket: "authpractice-de0bd.appspot.com",
-  messagingSenderId: "81370176960"
+let config = {
+  apiKey: "AIzaSyCbv_yfA_0ErFEHxQzA4IeOx0El9CrbM_4",
+  authDomain: "crudtest-342a3.firebaseapp.com",
+  databaseURL: "https://crudtest-342a3.firebaseio.com",
+  storageBucket: "crudtest-342a3.appspot.com",
+  messagingSenderId: "252598359517"
 };
 
 firebase.initializeApp(config);
