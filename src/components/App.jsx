@@ -51,18 +51,18 @@ class App extends React.Component {
                    id,
                    ElBackgroundColor: individualPostData.ElBackgroundColor,
                    content: individualPostData.content,
-                   likeCount: individualPostData.likeCount,
+                   LineCount: individualPostData.LineCount,
                  };
                });
              }
              this.setState({ posts });
            });
   }
-  handlePublish({ id, content, ElBackgroundColor, likeCount }) {
+  handlePublish({ id, content, ElBackgroundColor, LineCount }) {
     if (id) {
-      this.httpUpdatePost({ id, content, ElBackgroundColor, likeCount });
+      this.httpUpdatePost({ id, content, ElBackgroundColor, LineCount });
     } else {
-      this.httpPublishPost({ content, ElBackgroundColor, likeCount });
+      this.httpPublishPost({ content, ElBackgroundColor, LineCount });
     }
   }
   httpDeletePost(id) {
@@ -74,12 +74,12 @@ class App extends React.Component {
              this.httpGetPosts();
            });
   }
-  httpUpdatePost({ id, content, ElBackgroundColor, likeCount }) {
+  httpUpdatePost({ id, content, ElBackgroundColor, LineCount }) {
     const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
     // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
     request.patch(url)
-           .send({ content, ElBackgroundColor, likeCount })
+           .send({ content, ElBackgroundColor, LineCount })
            .then(() => {
              this.httpGetPosts();
            });
@@ -88,7 +88,7 @@ class App extends React.Component {
     const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
     // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.post(url)
-           .send({ content, ElBackgroundColor, likeCount: 0 })
+           .send({ content, ElBackgroundColor, LineCount: 0 })
            .then(() => {
              this.httpGetPosts();
            });
@@ -126,7 +126,8 @@ export default App;
 //background color
 //set speed
 //set width
-//make background say it's default
+//set direction
+//make entire block rotate
 
 
 

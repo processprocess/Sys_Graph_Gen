@@ -1,5 +1,5 @@
 import React from 'react';
-import LikeButton from './LikeButton.jsx';
+import LineButton from './LineButton.jsx';
 
 class Post extends React.Component {
   constructor(props) {
@@ -12,8 +12,8 @@ class Post extends React.Component {
     this.handleEditOfContent = this.handleEditOfContent.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
-    this.handleLikeClick = this.handleLikeClick.bind(this);
-    this.handleDisLikeClick = this.handleDisLikeClick.bind(this);
+    this.handleLineClick = this.handleLineClick.bind(this);
+    this.handleDisLineClick = this.handleDisLineClick.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -47,22 +47,22 @@ class Post extends React.Component {
     this.props.handleDelete(this.props.id);
   }
 
-  handleLikeClick() {
-    let localLikeCount = this.props.likeCount;
-    localLikeCount += 1;
+  handleLineClick() {
+    let localLineCount = this.props.LineCount;
+    localLineCount += 1;
     this.props.handlePublish({
-      likeCount: localLikeCount,
+      LineCount: localLineCount,
       id: this.props.id,
       ElBackgroundColor: this.state.localElBackgroundColor,
       content: this.state.localContent,
     });
   }
 
-  handleDisLikeClick() {
-    let localLikeCount = this.props.likeCount;
-    localLikeCount -= 1;
+  handleDisLineClick() {
+    let localLineCount = this.props.LineCount;
+    localLineCount -= 1;
     this.props.handlePublish({
-      likeCount: localLikeCount,
+      LineCount: localLineCount,
       id: this.props.id,
       ElBackgroundColor: this.state.localElBackgroundColor,
       content: this.state.localContent,
@@ -76,9 +76,9 @@ class Post extends React.Component {
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
-          {this.props.likeCount}
-          <button onClick={this.handleLikeClick} >+</button>
-          <button onClick={this.handleDisLikeClick} >-</button>
+          {this.props.LineCount}
+          <button onClick={this.handleLineClick} >+</button>
+          <button onClick={this.handleDisLineClick} >-</button>
           {/* {activeButtons} */}
           <button onClick={this.handleDeleteClick}>x</button>
           <form className="changeProperty" onSubmit={this.handleSubmit} >
@@ -88,10 +88,10 @@ class Post extends React.Component {
         </div>
 
         {/* <div className="theLines"> */}
-        <LikeButton
+        <LineButton
           ElBackgroundColor={this.props.ElBackgroundColor}
-          handleLikeClick={this.handleLikeClick}
-          likeCount={this.props.likeCount}
+          handleLineClick={this.handleLineClick}
+          LineCount={this.props.LineCount}
         />
         {/* </div> */}
 
@@ -103,8 +103,6 @@ class Post extends React.Component {
 export default Post;
 
 
-
-//on click, this.activebutton window shows up
 
 
 

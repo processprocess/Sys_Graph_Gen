@@ -11,7 +11,7 @@ class PostList extends React.Component {
             handlePublish={this.props.handlePublish}
             content={post.content}
             ElBackgroundColor={post.ElBackgroundColor}
-            likeCount={post.likeCount}
+            LineCount={post.LineCount}
             id={post.id}
           />
         </li>
