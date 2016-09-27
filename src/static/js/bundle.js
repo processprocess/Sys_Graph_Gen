@@ -30430,7 +30430,6 @@
 	  _createClass(ObjectRow, [{
 	    key: 'render',
 	    value: function render() {
-	
 	      var divStyle = {
 	        width: '100%',
 	        display: 'inline-block',
@@ -30439,7 +30438,6 @@
 	        borderColor: this.props.ElBackgroundColor,
 	        borderWidth: this.props.ElBorderWidth + 'px'
 	      };
-	
 	      return _react2.default.createElement('div', { style: divStyle });
 	    }
 	  }]);
