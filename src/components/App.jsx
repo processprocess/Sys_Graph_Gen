@@ -101,7 +101,7 @@ class App extends React.Component {
 
         <div className="wrapper1">
           <div id="header">
-            <button id="newPostButton" onClick={this.handlePublish}>new post</button>
+            <button id="newPostButton" onClick={this.handlePublish}>New Row</button>
           </div>
           {/* <Post handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} /> */}
           <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />

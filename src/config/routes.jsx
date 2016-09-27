@@ -19,10 +19,12 @@ const Routes = () => {
         <Route path="login" component={Login} />
         <Route path="App" component={App} />
         {/* <Route path="App" component={App} onEnter={requireAuth}/> */}
+        {/* refresh page without forcing login */}
       </Route>
     </Router>
   );
 }
+
 
 
 

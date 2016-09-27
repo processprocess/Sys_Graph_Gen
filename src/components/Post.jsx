@@ -8,8 +8,8 @@ class Post extends React.Component {
     super(props);
     this.state = {
       localElBackgroundColor: this.props.ElBackgroundColor || 'white',
-      localElAnimationDuration: this.props.ElAnimationDuration || 10,
-      localElBorderWidth: this.props.ElBorderWidth || '1',
+      localElAnimationDuration: this.props.ElAnimationDuration || 'speed',
+      localElBorderWidth: this.props.ElBorderWidth || 'width',
       localContent: this.props.content || '',
     };
 
@@ -27,8 +27,8 @@ class Post extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       localElBackgroundColor: nextProps.ElBackgroundColor || 'white',
-      localElAnimationDuration: nextProps.ElAnimationDuration || '10',
-      localElBorderWidth: nextProps.ElBorderWidth || '1',
+      localElAnimationDuration: nextProps.ElAnimationDuration || 'speed',
+      localElBorderWidth: nextProps.ElBorderWidth || 'width',
       localContent: nextProps.content || '',
     });
   }

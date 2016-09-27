@@ -41,10 +41,12 @@ class Login extends Component {
       <div>
         <div id="login-form">
           <div>
-            <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
+            <h2>Systematic Graphic Generator</h2>
+            <p>How might strings and numbers be manipulated in React?<br/></p>
+            <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
           <div>
-            <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
+            <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
           </div>
           <button className="btn" onClick={this.handleSubmit}>Login</button>
         </div>
