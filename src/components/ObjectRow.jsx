@@ -3,9 +3,6 @@ import React from 'react';
 export default class ObjectRow extends React.Component {
 
   render() {
-
-
-
     let divStyle = {
       width: '100%',
       display: 'inline-block',
@@ -14,7 +11,6 @@ export default class ObjectRow extends React.Component {
       borderColor: this.props.ElBackgroundColor,
       borderWidth: this.props.ElBorderWidth + 'px',
     }
-
     return (
       <div style={divStyle}>
       </div>

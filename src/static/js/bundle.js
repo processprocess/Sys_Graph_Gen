@@ -28076,12 +28076,23 @@
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement('input', { name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Systematic Graphic Generator'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'How might strings and numbers be manipulated in React?',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement('input', { name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
+	            _react2.default.createElement('input', { className: 'PasswordForm', name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
 	          ),
 	          _react2.default.createElement(
 	            'button',
@@ -28184,12 +28195,23 @@
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement('input', { name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Systematic Graphic Generator'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'How might strings and numbers be manipulated in React?',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement('input', { name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
+	            _react2.default.createElement('input', { className: 'PasswordForm', name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
 	          ),
 	          _react2.default.createElement(
 	            'button',
@@ -28396,7 +28418,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { id: 'newPostButton', onClick: this.handlePublish },
-	              'new post'
+	              'New Row'
 	            )
 	          ),
 	          _react2.default.createElement(_PostList2.default, { handleDelete: this.httpDeletePost, handlePublish: this.handlePublish, posts: this.state.posts })
@@ -30124,8 +30146,8 @@
 	
 	    _this.state = {
 	      localElBackgroundColor: _this.props.ElBackgroundColor || 'white',
-	      localElAnimationDuration: _this.props.ElAnimationDuration || 10,
-	      localElBorderWidth: _this.props.ElBorderWidth || '1',
+	      localElAnimationDuration: _this.props.ElAnimationDuration || 'speed',
+	      localElBorderWidth: _this.props.ElBorderWidth || 'width',
 	      localContent: _this.props.content || ''
 	    };
 	
@@ -30145,8 +30167,8 @@
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState({
 	        localElBackgroundColor: nextProps.ElBackgroundColor || 'white',
-	        localElAnimationDuration: nextProps.ElAnimationDuration || '10',
-	        localElBorderWidth: nextProps.ElBorderWidth || '1',
+	        localElAnimationDuration: nextProps.ElAnimationDuration || 'speed',
+	        localElBorderWidth: nextProps.ElBorderWidth || 'width',
 	        localContent: nextProps.content || ''
 	      });
 	    }
