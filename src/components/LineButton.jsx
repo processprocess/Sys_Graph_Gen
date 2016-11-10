@@ -45,27 +45,7 @@ export default class LineButton extends React.Component {
       animationTimingFunction: 'linear',
       animationIterationCount: 'infinite',
 
-
-      // display: 'inline-block',
-      // verticalAlign: 'middle',
-
-      margin: 'auto',
-      position: 'absolute',
-      width: '200%',
-      left: '-50%',
-      // top: -this.props.ElBorderWidth + '',
-      top: '0',
-      bottom: '0',
-      height:  '0px',
-
-
-
-      // top: '50%',
-      // transform: 'translateY(-50%)',
-      // paddingTop: '50%',
-      // paddingBottom: '-50%',
-      // bottom: '300px',
-      // z-index: 1,
+      // border: '1px solid red'
     }
 
     return (
@@ -75,3 +55,12 @@ export default class LineButton extends React.Component {
     );
   }
 }
+
+
+
+
+
+
+
+
+//

@@ -21,7 +21,7 @@ dir {
 	padding: 0px;
 }
 
-ul, menu, dir {
+/*ul, menu, dir {
     display: block;
     list-style-type: disc;
     -webkit-margin-before: 0em;
@@ -29,17 +29,17 @@ ul, menu, dir {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     -webkit-padding-start: 40px;
-}
+}*/
 
-ul {
+/*ul {
 	margin: 0px;
 	padding: 0px;
-}
+}*/
 
-li {
+/*li {
 	margin: 0px;
 	padding: 0px;
-}
+}*/
 
 h2 {
 		font-weight: lighter;
@@ -96,17 +96,27 @@ h2 {
 	/*background-color: red;*/
 }
 
+.debugBox {
+	position:absolute;
+	width: 200%;
+	/*border: 1px solid grey;*/
+}
+
 .LineHolder {
-	pointer-events: none;
 	position:fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	width:100%;
-	height:100%;
-	/*border: 1px solid red;*/
-	z-index: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	/*border: 1px solid blue;*/
 }
 
 .hidden {
@@ -118,14 +128,6 @@ ul {
 	margin: 0px;
 	padding: 0px;
 }
-
-.changeProperty {
-	/*background-color: grey;*/
-
-	/*background-color: transparent;*/
-}
-
-
 
 #login-form {
 	width:300px;

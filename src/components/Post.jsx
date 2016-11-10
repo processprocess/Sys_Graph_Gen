@@ -3,7 +3,7 @@ import LineButton from './LineButton.jsx';
 
 
 
-class Post extends React.Component {
+export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,8 +75,9 @@ class Post extends React.Component {
       let RotationDirection = '+'
       for (let i = 0 ; i < 2 ; i ++) {
           linesReflectArray.push(
-            <div key = {i}>
+            <div key = {i} className = 'debugBox'>
               <LineButton
+                // key = {i}
                 ElBackgroundColor={this.props.ElBackgroundColor}
                 ElAnimationDuration={this.props.ElAnimationDuration}
                 ElBorderWidth={this.props.ElBorderWidth}
@@ -93,7 +94,7 @@ class Post extends React.Component {
 
       return (
 
-      <div >
+      <div>
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
@@ -103,7 +104,7 @@ class Post extends React.Component {
           <button value='LineCount' onClick={this.handleLineClick} >-</button>
           <button onClick={this.handleDeleteClick}>x</button>
 
-          <form className="changeProperty" onSubmit={this.handleSubmit} >
+          <form onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} />
           </form>
 
@@ -111,7 +112,7 @@ class Post extends React.Component {
           <button value='ElAnimationDuration' onClick={this.handleLineClick} >+</button>
           <button value='ElAnimationDuration' onClick={this.handleLineClick} >-</button>
 
-          {/* <form className="changeProperty" onSubmit={this.handleSubmit} >
+          {/* <form onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElAnimationDuration} onChange={this.handleEditOfElAnimationDuration} />
           </form> */}
 
@@ -139,9 +140,6 @@ class Post extends React.Component {
     );
   }
 }
-
-
-export default Post;
 
 
 
