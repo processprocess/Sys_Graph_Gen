@@ -40,9 +40,6 @@ class App extends React.Component {
     request.get(url)
            .then((response) => {
              const postsData = response.body;
-
-
-
              let posts = [];
              if (postsData) {
                posts = Object.keys(postsData).map((id) => {
@@ -64,7 +61,7 @@ class App extends React.Component {
     if (id) {
       this.httpUpdatePost({ id, content, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount });
     } else {
-      this.httpPublishPost({ content, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount });
+      this.httpPublishPost({ content, ElBackgroundColor, ElAnimationDuration: 100, ElBorderWidth: 1, LineCount });
     }
   }
   httpDeletePost(id) {
@@ -90,7 +87,7 @@ class App extends React.Component {
     const url = `https://crudtest-342a3.firebaseio.com/posts/${this.state.currentUser}.json`;
     // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
     request.post(url)
-           .send({ content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration, LineCount: 0 })
+           .send({ content, ElBackgroundColor, ElBorderWidth, ElAnimationDuration, LineCount: 1 })
            .then(() => {
              this.httpGetPosts();
            });
@@ -100,11 +97,11 @@ class App extends React.Component {
       <div className="container">
 
         <div className="wrapper1">
-          <div id="header">
-            <button id="newPostButton" onClick={this.handlePublish}>New Row</button>
-          </div>
           {/* <Post handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} /> */}
           <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />
+          <div id="header">
+          <button id="newPostButton" onClick={this.handlePublish}>New Row</button>
+          </div>
         </div>
 
         {/* <div className="wrapper1">

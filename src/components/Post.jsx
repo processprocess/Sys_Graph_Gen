@@ -8,32 +8,24 @@ class Post extends React.Component {
     super(props);
     this.state = {
       localElBackgroundColor: this.props.ElBackgroundColor || 'white',
-      localElAnimationDuration: this.props.ElAnimationDuration || 'speed',
-      localElBorderWidth: this.props.ElBorderWidth || 'width',
-      localContent: this.props.content || '',
+      localElAnimationDuration: this.props.ElAnimationDuration || '100',
+      localElBorderWidth: this.props.ElBorderWidth || '1',
+      LineCount: this.props.content,
     };
-
-
-
     this.handleEditOfElBackgroundColor = this.handleEditOfElBackgroundColor.bind(this);
-    this.handleEditOfElAnimationDuration = this.handleEditOfElAnimationDuration.bind(this);
-    this.handleEditOfElBorderWidth = this.handleEditOfElBorderWidth.bind(this);
-    this.handleEditOfContent = this.handleEditOfContent.bind(this);
+    // this.handleEditOfElAnimationDuration = this.handleEditOfElAnimationDuration.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleLineClick = this.handleLineClick.bind(this);
-    this.handleDisLineClick = this.handleDisLineClick.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       localElBackgroundColor: nextProps.ElBackgroundColor || 'white',
-      localElAnimationDuration: nextProps.ElAnimationDuration || 'speed',
-      localElBorderWidth: nextProps.ElBorderWidth || 'width',
-      localContent: nextProps.content || '',
+      localElAnimationDuration: nextProps.ElAnimationDuration || '100',
+      localElBorderWidth: nextProps.ElBorderWidth || '1',
     });
   }
-
-
 
   handleEditOfElBackgroundColor(e) {
     const newElBackgroundColor = e.target.value;
@@ -42,28 +34,12 @@ class Post extends React.Component {
     });
   }
 
-  handleEditOfElAnimationDuration(e) {
-    const newElAnimationDuration = e.target.value;
-    this.setState({
-      localElAnimationDuration: newElAnimationDuration,
-    });
-  }
-
-  handleEditOfElBorderWidth(e) {
-    const newElBorderWidth = e.target.value;
-    this.setState({
-      localElBorderWidth: newElBorderWidth,
-    });
-  }
-
-  handleEditOfContent(e) {
-    const newContent = e.target.value;
-    this.setState({
-      localContent: newContent,
-    });
-  }
-
-
+  // handleEditOfElAnimationDuration(e) {
+  //   const newElAnimationDuration = e.target.value;
+  //   this.setState({
+  //     localElAnimationDuration: newElAnimationDuration,
+  //   });
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -72,7 +48,6 @@ class Post extends React.Component {
       ElBackgroundColor: this.state.localElBackgroundColor,
       ElAnimationDuration: this.state.localElAnimationDuration,
       ElBorderWidth: this.state.localElBorderWidth,
-      content: this.state.localContent,
     });
     this.setState({ saved: true });
   }
@@ -81,68 +56,84 @@ class Post extends React.Component {
     this.props.handleDelete(this.props.id);
   }
 
-
-
-  handleLineClick() {
-    let localLineCount = this.props.LineCount;
-    localLineCount += 1;
+  handleLineClick(e) {
+    let localKey = e.target.value;
+    let textContent = e.target.textContent;
+    let localValueCount = eval('this.props.' + e.target.value);
+    localValueCount = eval(localValueCount + textContent + 1)
     this.props.handlePublish({
-      LineCount: localLineCount,
+      [localKey]: localValueCount,
       id: this.props.id,
       ElBackgroundColor: this.state.localElBackgroundColor,
-      ElAnimationDuration: this.state.localElAnimationDuration,
-      ElBorderWidth: this.state.localElBorderWidth,
-      content: this.state.localContent,
-    });
-  }
-
-
-
-  handleDisLineClick() {
-    let localLineCount = this.props.LineCount;
-    localLineCount -= 1;
-    this.props.handlePublish({
-      LineCount: localLineCount,
-      id: this.props.id,
-      ElBackgroundColor: this.state.localElBackgroundColor,
-      ElAnimationDuration: this.state.localElAnimationDuration,
-      ElBorderWidth: this.state.ElBorderWidth,
-      content: this.state.localContent,
+      // ElAnimationDuration: this.state.localElAnimationDuration,
     });
   }
 
   render() {
-    return (
 
-      <div className='saved'>
+      let linesReflectArray = []
+      let RotationDirection = '+'
+      for (let i = 0 ; i < 2 ; i ++) {
+          linesReflectArray.push(
+            <div key = {i}>
+              <LineButton
+                ElBackgroundColor={this.props.ElBackgroundColor}
+                ElAnimationDuration={this.props.ElAnimationDuration}
+                ElBorderWidth={this.props.ElBorderWidth}
+                RotationDirection={RotationDirection}
+                // handleLineClick={this.handleLineClick}
+                LineCount={this.props.LineCount}
+              />
+            </div>
+          );
+          RotationDirection = '-'
+          //creates symmetry
+          // RandomDistance -= RandomDistance*2;
+      }
+
+      return (
+
+      <div >
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
-          {this.props.LineCount}
-          <button onClick={this.handleLineClick} >+</button>
-          <button onClick={this.handleDisLineClick} >-</button>
-          {/* {activeButtons} */}
+
+          {this.props.LineCount + ' lines'}
+          <button value='LineCount' onClick={this.handleLineClick} >+</button>
+          <button value='LineCount' onClick={this.handleLineClick} >-</button>
           <button onClick={this.handleDeleteClick}>x</button>
+
           <form className="changeProperty" onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} />
           </form>
-          <form className="changeProperty" onSubmit={this.handleSubmit} >
+
+          {this.props.ElAnimationDuration + ' animation Duration'}
+          <button value='ElAnimationDuration' onClick={this.handleLineClick} >+</button>
+          <button value='ElAnimationDuration' onClick={this.handleLineClick} >-</button>
+
+          {/* <form className="changeProperty" onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElAnimationDuration} onChange={this.handleEditOfElAnimationDuration} />
-          </form>
-          <form className="changeProperty" onSubmit={this.handleSubmit} >
-            <input className="editElementInput" type="text" placeholder={this.state.localElBorderWidth} onChange={this.handleEditOfElBorderWidth} />
-          </form>
+          </form> */}
+
+          {this.props.ElBorderWidth + ' border width'}
+          <button value='ElBorderWidth' onClick={this.handleLineClick} >+</button>
+          <button value='ElBorderWidth' onClick={this.handleLineClick} >-</button>
+
         </div>
 
-        {/* <div className="theLines"> */}
-        <LineButton
-          ElBackgroundColor={this.props.ElBackgroundColor}
-          ElAnimationDuration={this.props.ElAnimationDuration}
-          ElBorderWidth={this.props.ElBorderWidth}
-          handleLineClick={this.handleLineClick}
-          LineCount={this.props.LineCount}
-        />
-        {/* </div> */}
+        <div className="LineHolder">
+          {linesReflectArray}
+        </div>
+
+        {/* <div className="LineHolder">
+          <LineButton
+            ElBackgroundColor={this.props.ElBackgroundColor}
+            ElAnimationDuration={this.props.ElAnimationDuration}
+            ElBorderWidth={this.props.ElBorderWidth}
+            // handleLineClick={this.handleLineClick}
+            LineCount={this.props.LineCount}
+          />
+        </div> */}
 
       </div>
     );

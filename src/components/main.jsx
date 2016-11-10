@@ -23,13 +23,10 @@ class Main extends Component {
       firebase.auth().onAuthStateChanged((user) => {
         this.setState({
           loggedIn: (user !== null),
-
-
         });
         // this.getUser();
       });
     }, 200);
-
   }
 
 
@@ -73,7 +70,7 @@ class Main extends Component {
       )
     } else {
       return (
-        <div >
+        <div>
           {/* <p>test</p> */}
           {/* <p>{this.props.params.email}</p> */}
           <a href="#" id="sign-out" onClick={this.signOut}>Sign Out</a>
