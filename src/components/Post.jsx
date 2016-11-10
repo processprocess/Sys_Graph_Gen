@@ -10,7 +10,7 @@ export default class Post extends React.Component {
       localElBackgroundColor: this.props.ElBackgroundColor || 'white',
       localElAnimationDuration: this.props.ElAnimationDuration || '100',
       localElBorderWidth: this.props.ElBorderWidth || '1',
-      LineCount: this.props.content,
+      LineCount: this.props.LineCount,
     };
     this.handleEditOfElBackgroundColor = this.handleEditOfElBackgroundColor.bind(this);
     // this.handleEditOfElAnimationDuration = this.handleEditOfElAnimationDuration.bind(this);
@@ -58,9 +58,9 @@ export default class Post extends React.Component {
 
   handleLineClick(e) {
     let localKey = e.target.value;
-    let textContent = e.target.textContent;
+    let htmlTextContent = e.target.textContent;
     let localValueCount = eval('this.props.' + e.target.value);
-    localValueCount = eval(localValueCount + textContent + 1)
+    localValueCount = eval(localValueCount + htmlTextContent + 1)
     this.props.handlePublish({
       [localKey]: localValueCount,
       id: this.props.id,

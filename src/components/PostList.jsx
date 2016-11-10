@@ -9,7 +9,6 @@ class PostList extends React.Component {
           <Post
             handleDelete={this.props.handleDelete}
             handlePublish={this.props.handlePublish}
-            content={post.content}
             ElBackgroundColor={post.ElBackgroundColor}
             ElAnimationDuration={post.ElAnimationDuration}
             ElBorderWidth={post.ElBorderWidth}

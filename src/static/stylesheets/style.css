@@ -11,98 +11,71 @@ body {
 	padding: 0px;
 }
 
-menu {
-	margin: 0px;
-	padding: 0px;
+
+.systemHeader {
+	position: relative;
+	display:inline-block;
+	float: left;
+	top: 0;
+	/*background-color: black;*/
+	width: 100%;
+	z-index: 100;
+	border-bottom: 1px solid white;
+	/*text-align: center;*/
 }
 
-dir {
-	margin: 0px;
-	padding: 0px;
+h3 {
+	margin:10px;
+	position fixed;
+	font-size: 30px;
+		/*font-weight: lighter;*/
 }
-
-/*ul, menu, dir {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
-}*/
-
-/*ul {
-	margin: 0px;
-	padding: 0px;
-}*/
-
-/*li {
-	margin: 0px;
-	padding: 0px;
-}*/
 
 h2 {
 		font-weight: lighter;
-		/*line-height: 2;*/
 }
 
 #header {
 	height:30px;
-	/*background-color: red;*/
-	/*border: .5px solid grey;*/
-}
-
-.wrapper1 {
-	width:80%;
-	background-color: black;
-	display:inline-block;
 }
 
 #newPostButton {
 	padding: 0px;
   margin: 0px;
-  /*text-align: center;*/
   display: inline-block;
-  /*left:50%;*/
-	/*top:5px;*/
-  position:absolute;
+  position:relative;
+	/*position:absolute;*/
   width:75px;
 	height: 10px;
 	z-index: 2;
-  /*margin-left:-54px;*/
 }
-
 
 .deleteButton{
 	padding: 0px;
 	margin: 0px;
-	/*text-align: center;*/
-	/*display: inline-block;*/
-	/*left:50%;*/
-	/*top:5px;*/
 	position:absolute;
 	display:inline-block;
 	width:20px;
 	height: 10px;
-	/*margin-left:-54px;*/
 }
 
+
+
 .postControls {
-  position:relative;
+  /*position:relative;*/
 	z-index: 2;
-	/*float:left;*/
-	/*display: inline inline-block;*/
-	/*position: absolute;*/
-	/*background-color: red;*/
+	/*border:1px solid blue;*/
 }
+
+
 
 .debugBox {
 	position:absolute;
 	width: 200%;
-	/*border: 1px solid grey;*/
 }
 
 .LineHolder {
+	pointer-events: none;
 	position:fixed;
 	top: 0;
 	bottom: 0;
@@ -115,7 +88,6 @@ h2 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	/*border: 1px solid blue;*/
 }
 
@@ -132,8 +104,6 @@ ul {
 #login-form {
 	width:300px;
 	height:200px;
-	/*background-color: grey;*/
-	/*border: 1px solid grey;*/
 	margin:0 auto;
 	text-align:center;
 	top: 50%;
@@ -141,14 +111,11 @@ ul {
 	margin-top: -100px;
 	left: 50%;
 	position:absolute;
-		/*display:inline-block;*/
 }
 
 #register-form, #login-form{
 	width:500px;
 	height:200px;
-	/*background-color: transparent;*/
-	/*border: 1px solid grey;*/
 	margin:0 auto;
 	text-align:center;
 	top: 50%;
@@ -156,7 +123,6 @@ ul {
 	margin-top: -100px;
 	left: 50%;
 	position:absolute;
-		/*display:inline-block;*/
 }
 
 .userNameForm, .PasswordForm {
@@ -193,73 +159,33 @@ ul {
 	color: red;
 }
 
-/*#login {
-	color:white;
-	float: right;
-}
-
-#register {
-	color:white;
-	float: right;
-}*/
-
 #sign-out {
-	float: right;
+	position:fixed;
+	right: 0;
+	/*float: right;*/
 	padding:10px;
 	color: white;
 	text-decoration: none;
+	z-index: 1000;
 }
+
 #sign-out:hover {
 	color: red;
 }
 
-/*a {
-		text-decoration: none;
-		color:grey;
-		float: right;
-		padding:10px
-}*/
-
-/*a:hover {
-		color:red;
-}*/
-
 .editElementInput {
 	background-color: transparent;
 	color:white;
-	display:inline-block;
+	/*display:inline-block;*/
 	/*position:absolute;*/
 	width:50px
 }
 
 form {
-	float:left;
-	/*position: absolute;*/
+	display: inline-block;
+	/*float:left;*/
 }
-
-/*input {
-	font-size: 1.5em;
-}*/
-
-/*form.post-display input[name="author"] {
-	width: 10%;
-	display: inline-block;
-}*/
-
-/*form.post-display input[name="content"] {
-	width: 80%;
-	display: inline-block;
-}*/
 
 div.like-button {
-	display: inline-block;
-}
-
-
-
-
-
-
-.active-buttons {
 	display: inline-block;
 }
