@@ -17,6 +17,7 @@ export default class Post extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleLineClick = this.handleLineClick.bind(this);
+    this.handleDelLineClick = this.handleDelLineClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,10 +29,21 @@ export default class Post extends React.Component {
   }
 
   handleEditOfElBackgroundColor(e) {
+    console.log(e.target.value);
     const newElBackgroundColor = e.target.value;
     this.setState({
       localElBackgroundColor: newElBackgroundColor,
     });
+
+    setTimeout(function() {
+      this.props.handlePublish({
+        id: this.props.id,
+        ElBackgroundColor: this.state.localElBackgroundColor,
+      });
+
+    }.bind(this), 10);
+
+
   }
 
   // handleEditOfElAnimationDuration(e) {
@@ -56,11 +68,24 @@ export default class Post extends React.Component {
     this.props.handleDelete(this.props.id);
   }
 
+  // handleLineClick(e) {
+  //   let localKey = e.target.value;
+  //   let htmlTextContent = e.target.textContent;
+  //   let localValueCount = eval('this.props.' + e.target.value);
+  //   localValueCount = eval(localValueCount + htmlTextContent + 1)
+  //   this.props.handlePublish({
+  //     [localKey]: localValueCount,
+  //     id: this.props.id,
+  //     ElBackgroundColor: this.state.localElBackgroundColor,
+  //     // ElAnimationDuration: this.state.localElAnimationDuration,
+  //   });
+  // }
+
   handleLineClick(e) {
     let localKey = e.target.value;
-    let htmlTextContent = e.target.textContent;
+    // let htmlTextContent = e.target.textContent;
     let localValueCount = eval('this.props.' + e.target.value);
-    localValueCount = eval(localValueCount + htmlTextContent + 1)
+    localValueCount += 1;
     this.props.handlePublish({
       [localKey]: localValueCount,
       id: this.props.id,
@@ -68,6 +93,32 @@ export default class Post extends React.Component {
       // ElAnimationDuration: this.state.localElAnimationDuration,
     });
   }
+
+  handleDelLineClick(e) {
+    let localKey = e.target.value;
+    // let htmlTextContent = e.target.textContent;
+    let localValueCount = eval('this.props.' + e.target.value);
+    localValueCount -= 1;
+    this.props.handlePublish({
+      [localKey]: localValueCount,
+      id: this.props.id,
+      ElBackgroundColor: this.state.localElBackgroundColor,
+      // ElAnimationDuration: this.state.localElAnimationDuration,
+    });
+  }
+
+  // handleBackgroundColorClick(e) {
+  //   let localKey = e.target.value;
+  //   // let htmlTextContent = e.target.textContent;
+  //   let localValueCount = eval('this.props.' + e.target.value);
+  //   // localValueCount -= 1;
+  //   this.props.handlePublish({
+  //     // [localKey]: localValueCount,
+  //     id: this.props.id,
+  //     ElBackgroundColor: this.state.localElBackgroundColor,
+  //     // ElAnimationDuration: this.state.localElAnimationDuration,
+  //   });
+  // }
 
   render() {
 
@@ -92,6 +143,11 @@ export default class Post extends React.Component {
           // RandomDistance -= RandomDistance*2;
       }
 
+      let colorSelectStyle = {
+        	color: this.props.ElBackgroundColor,
+          // color: 'blue',
+      }
+
       return (
 
       <div>
@@ -99,42 +155,46 @@ export default class Post extends React.Component {
 
         <div className="postControls">
 
-          {this.props.LineCount + ' lines'}
-          <button value='LineCount' onClick={this.handleLineClick} >+</button>
-          <button value='LineCount' onClick={this.handleLineClick} >-</button>
-          <button onClick={this.handleDeleteClick}>x</button>
+          <div className='postButtonHolder'>
+            {this.props.LineCount + ' lines'}
+            <button className="buttonPluss" value='LineCount' onClick={this.handleLineClick}>+</button>
+            <button className="buttonNegative" value='LineCount' onClick={this.handleDelLineClick}>-</button>
+          </div>
 
-          <form onSubmit={this.handleSubmit} >
-            <input className="editElementInput" type="text" placeholder={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor} />
-          </form>
 
-          {this.props.ElAnimationDuration + ' animation Duration'}
-          <button value='ElAnimationDuration' onClick={this.handleLineClick} >+</button>
-          <button value='ElAnimationDuration' onClick={this.handleLineClick} >-</button>
+          <div className='postButtonHolder'>
+            {this.props.ElAnimationDuration + ' animation Duration'}
+            <button className="buttonPluss" value='ElAnimationDuration' onClick={this.handleLineClick} >+</button>
+            <button className="buttonNegative" value='ElAnimationDuration' onClick={this.handleDelLineClick} >-</button>
+          </div>
 
           {/* <form onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElAnimationDuration} onChange={this.handleEditOfElAnimationDuration} />
           </form> */}
+          <div className='postButtonHolder'>
+            {this.props.ElBorderWidth + ' border width'}
+            <button className="buttonPluss" value='ElBorderWidth' onClick={this.handleLineClick} >+</button>
+            <button className="buttonNegative" value='ElBorderWidth' onClick={this.handleDelLineClick} >-</button>
+          </div>
 
-          {this.props.ElBorderWidth + ' border width'}
-          <button value='ElBorderWidth' onClick={this.handleLineClick} >+</button>
-          <button value='ElBorderWidth' onClick={this.handleLineClick} >-</button>
+          <div className='postButtonHolder' >
+            <select className="buttonColorSelector" style={colorSelectStyle} defaultValue={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor}>
+              <option value="white">white</option>
+              <option value="red">red</option>
+              <option value="blue">blue</option>
+              <option value="yellow">yellow</option>
+              <option value="purple">purple</option>
+              <option value="orange">orange</option>
+              <option value="black">black</option>
+            </select>
+          </div>
 
+          <button className='buttonDelete' onClick={this.handleDeleteClick}>delete row</button>
         </div>
 
         <div className="LineHolder">
           {linesReflectArray}
         </div>
-
-        {/* <div className="LineHolder">
-          <LineButton
-            ElBackgroundColor={this.props.ElBackgroundColor}
-            ElAnimationDuration={this.props.ElAnimationDuration}
-            ElBorderWidth={this.props.ElBorderWidth}
-            // handleLineClick={this.handleLineClick}
-            LineCount={this.props.LineCount}
-          />
-        </div> */}
 
       </div>
     );

@@ -35,10 +35,6 @@ h2 {
 		font-weight: lighter;
 }
 
-#header {
-	height:30px;
-}
-
 #newPostButton {
 	padding: 0px;
   margin: 0px;
@@ -50,24 +46,142 @@ h2 {
 	z-index: 2;
 }
 
-.deleteButton{
-	padding: 0px;
-	margin: 0px;
-	position:absolute;
-	display:inline-block;
-	width:20px;
-	height: 10px;
-}
-
-
-
 .postControls {
-  /*position:relative;*/
-	z-index: 2;
+  position:relative;
+	z-index: 10000;
+	font-size: 12px;
+	opacity: 0.1;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
 	/*border:1px solid blue;*/
 }
 
+.postControls:hover {
+	opacity: 1;
+}
 
+.postButtonHolder {
+	border: 1px solid white;
+	border-radius: 20px;
+	background-color: black;
+	padding: 3px 6px;
+	margin: 2px 1px;
+	display: inline-block;
+}
+
+.buttonDelete {
+	position: relative;
+	background-color: red;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 3px 6px;
+	margin: 3px 7px;
+	text-align: center;
+	/*text-decoration: none;*/
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	outline: 0;
+}
+
+.buttonDelete:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+}
+
+.buttonAddRow{
+	position: relative;
+	background-color: green;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 3px 6px;
+	margin: 3px 7px;
+	text-align: center;
+	/*text-decoration: none;*/
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	outline: 0;
+}
+
+.buttonAddRow:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+}
+
+.buttonPluss{
+	position: relative;
+	background-color: green;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 3px 6px;
+	margin-left: 5px;
+	/*margin: 3px 7px;*/
+	text-align: center;
+	/*text-decoration: none;*/
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	outline: 0;
+}
+
+.buttonPluss:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(0,255,0,1);
+}
+
+.buttonNegative{
+	position: relative;
+	background-color: red;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 3px 6px;
+	margin-left: 5px;
+	text-align: center;
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	outline: 0;
+}
+
+.buttonNegative:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+}
+
+.buttonColorSelector {
+	/*padding-left:10px;*/
+	border: 1px solid white;
+	border-radius: 20px;
+	background-color: transparent;
+	border: none;
+	/*padding: 3px 6px;*/
+	/*padding: 10px;*/
+	/*color:blue;*/
+	font-size: 12px;
+	/*width:100px;*/
+	display: inline-block;
+	/*display: none;*/
+}
+
+.buttonColorSelector:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+}
+
+.buttonColorSelector:focus {
+    outline:none;
+}
 
 .debugBox {
 	position:absolute;

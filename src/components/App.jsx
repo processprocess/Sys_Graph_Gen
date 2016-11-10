@@ -91,9 +91,7 @@ export default class App extends React.Component {
           <h3>sys-graph-gen</h3>
         </div>
         <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />
-        <div id="header">
-          <button id="newPostButton" onClick={this.handlePublish}>New Row</button>
-        </div>
+        <button className="postControls buttonAddRow" onClick={this.handlePublish}>New Row</button>
       </div>
     );
   }
