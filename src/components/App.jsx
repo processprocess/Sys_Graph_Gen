@@ -19,15 +19,8 @@ export default class App extends React.Component {
     this.getUser()
     setTimeout(() => {
       this.httpGetPosts();
-      // console.log(this.props)
-      // console.log(this.props.RowCount)
     }, 300);
-
-    // this.props.RowCount == 0 ? this.props.handlePublish() : null;
-
-
   }
-
 
   getUser() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -59,9 +52,7 @@ export default class App extends React.Component {
              }
              else { this.handlePublish({}) }
              this.setState({ posts });
-            //  console.log(this.state.posts.length)
            });
-          //  this.state.posts.length == 0 ? this.handlePublish({}) : null;
   }
   handlePublish({ id, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount }) {
     if (id) {

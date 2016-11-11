@@ -7,9 +7,6 @@ import Login from '../components/login.jsx';
 import App from '../components/App.jsx';
 import requireAuth from '../utils/auth.js';
 
-
-
-
 const Routes = () => {
   return (
     <Router history={hashHistory}>
