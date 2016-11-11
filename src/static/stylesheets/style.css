@@ -13,6 +13,7 @@ body {
 
 
 .systemHeader {
+	/*pointer-events: none;*/
 	position: relative;
 	display:inline-block;
 	float: left;
@@ -28,11 +29,11 @@ h3 {
 	margin:10px;
 	position fixed;
 	font-size: 30px;
-		/*font-weight: lighter;*/
+	/*font-weight: lighter;*/
 }
 
 h2 {
-		font-weight: lighter;
+	font-weight: lighter;
 }
 
 #newPostButton {
@@ -47,8 +48,9 @@ h2 {
 }
 
 .postControls {
+	/*pointer-events: none;*/
   position:relative;
-	z-index: 10000;
+	z-index: 10;
 	font-size: 12px;
 	opacity: 0.1;
 	transition: opacity .25s ease-in-out;
@@ -280,7 +282,7 @@ ul {
 	padding:10px;
 	color: white;
 	text-decoration: none;
-	z-index: 1000;
+	z-index: 10000;
 }
 
 #sign-out:hover {

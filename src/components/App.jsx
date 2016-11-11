@@ -19,8 +19,15 @@ export default class App extends React.Component {
     this.getUser()
     setTimeout(() => {
       this.httpGetPosts();
+      // console.log(this.props)
+      // console.log(this.props.RowCount)
     }, 300);
+
+    // this.props.RowCount == 0 ? this.props.handlePublish() : null;
+
+
   }
+
 
   getUser() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -28,7 +35,6 @@ export default class App extends React.Component {
         this.setState({
           currentUser: user.uid,
         });
-        console.log(this.state.currentUser);
       }
     });
   }
@@ -51,14 +57,17 @@ export default class App extends React.Component {
                  };
                });
              }
+             else { this.handlePublish({}) }
              this.setState({ posts });
+            //  console.log(this.state.posts.length)
            });
+          //  this.state.posts.length == 0 ? this.handlePublish({}) : null;
   }
   handlePublish({ id, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount }) {
     if (id) {
       this.httpUpdatePost({ id, ElBackgroundColor, ElAnimationDuration, ElBorderWidth, LineCount });
     } else {
-      this.httpPublishPost({ ElBackgroundColor, ElAnimationDuration: 100, ElBorderWidth: 7, LineCount: 7 });
+      this.httpPublishPost({ ElBackgroundColor: 'white', ElAnimationDuration: 100, ElBorderWidth: 7, LineCount: 7 });
     }
   }
   httpDeletePost(id) {
@@ -90,7 +99,9 @@ export default class App extends React.Component {
         <div className="systemHeader">
           <h3>sys-graph-gen</h3>
         </div>
-        <PostList handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} />
+        <PostList handleDelete={this.httpDeletePost}
+                  handlePublish={this.handlePublish}
+                  posts={this.state.posts} />
         <button className="postControls buttonAddRow" onClick={this.handlePublish}>New Row</button>
       </div>
     );

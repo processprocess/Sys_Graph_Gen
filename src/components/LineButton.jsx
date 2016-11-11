@@ -36,7 +36,8 @@ export default class LineButton extends React.Component {
           ElBackgroundColor={this.props.ElBackgroundColor}
           ElBorderWidth={this.props.ElBorderWidth}
           LineCount={this.props.LineCount}
-        />);
+        />
+      );
     }
 
     let divStyle = {
@@ -44,7 +45,6 @@ export default class LineButton extends React.Component {
       animationDuration: this.props.ElAnimationDuration + 's',
       animationTimingFunction: 'linear',
       animationIterationCount: 'infinite',
-
       // border: '1px solid red'
     }
 

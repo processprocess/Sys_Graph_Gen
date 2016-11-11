@@ -1,8 +1,6 @@
 import React from 'react';
 import LineButton from './LineButton.jsx';
 
-
-
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -29,21 +27,16 @@ export default class Post extends React.Component {
   }
 
   handleEditOfElBackgroundColor(e) {
-    console.log(e.target.value);
     const newElBackgroundColor = e.target.value;
     this.setState({
       localElBackgroundColor: newElBackgroundColor,
     });
-
     setTimeout(function() {
       this.props.handlePublish({
         id: this.props.id,
         ElBackgroundColor: this.state.localElBackgroundColor,
       });
-
     }.bind(this), 10);
-
-
   }
 
   // handleEditOfElAnimationDuration(e) {
@@ -65,7 +58,7 @@ export default class Post extends React.Component {
   }
 
   handleDeleteClick() {
-    this.props.handleDelete(this.props.id);
+    this.props.RowCount > 1 ? this.props.handleDelete(this.props.id) : null;
   }
 
   // handleLineClick(e) {
@@ -161,20 +154,20 @@ export default class Post extends React.Component {
             <button className="buttonNegative" value='LineCount' onClick={this.handleDelLineClick}>-</button>
           </div>
 
-
-          <div className='postButtonHolder'>
+          {/* <div className='postButtonHolder'>
             {this.props.ElAnimationDuration + ' animation Duration'}
             <button className="buttonPluss" value='ElAnimationDuration' onClick={this.handleLineClick} >+</button>
             <button className="buttonNegative" value='ElAnimationDuration' onClick={this.handleDelLineClick} >-</button>
-          </div>
+          </div> */}
 
           {/* <form onSubmit={this.handleSubmit} >
             <input className="editElementInput" type="text" placeholder={this.state.localElAnimationDuration} onChange={this.handleEditOfElAnimationDuration} />
           </form> */}
+
           <div className='postButtonHolder'>
             {this.props.ElBorderWidth + ' border width'}
-            <button className="buttonPluss" value='ElBorderWidth' onClick={this.handleLineClick} >+</button>
-            <button className="buttonNegative" value='ElBorderWidth' onClick={this.handleDelLineClick} >-</button>
+            <button className="buttonPluss" value='ElBorderWidth' onClick={this.handleLineClick}>+</button>
+            <button className="buttonNegative" value='ElBorderWidth' onClick={this.handleDelLineClick}>-</button>
           </div>
 
           <div className='postButtonHolder' >
