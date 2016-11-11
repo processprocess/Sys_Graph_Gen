@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import firebase from '../../firebase.config.js';
+// import { withRouter } from 'react-router';
 
 const propTypes = {
   children: React.PropTypes.element.isRequired,
@@ -62,10 +63,12 @@ class Main extends Component {
 
   loggedInLinks() {
     if(!this.state.loggedIn){
+      // this.props.router.push('/App')
       return (
         <div id="enterLinks">
           <Link to="/login" id="login">Login</Link>
           <Link to="/register" id="register">Register</Link>
+          {/* <a href="/App" id="sign-out" onClick={this.signOut}>Sign Out</a> */}
         </div>
       )
     } else {
@@ -73,7 +76,8 @@ class Main extends Component {
         <div>
           {/* <p>test</p> */}
           {/* <p>{this.props.params.email}</p> */}
-          <a href="#" id="sign-out" onClick={this.signOut}>Sign Out</a>
+          <a href="/" id="sign-out" onClick={this.signOut}>Sign Out</a>
+          {/* <a href="#" id="sign-out" onClick={this.signOut}>Sign Out</a> */}
         </div>
       );
     }

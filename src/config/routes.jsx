@@ -10,8 +10,9 @@ import requireAuth from '../utils/auth.js';
 const Routes = () => {
   return (
     <Router history={hashHistory}>
+      {/* <Route path="/" component={App}> */}
       <Route path="/" component={Main}>
-        <IndexRoute component={Home}/>
+        <IndexRoute component={App}/>
         <Route path="register" component={Register} />
         <Route path="login" component={Login} />
         <Route path="App" component={App} />
