@@ -33,7 +33,9 @@ h3 {
 }
 
 h2 {
-	font-weight: lighter;
+	margin:10px;
+	position fixed;
+	font-size: 25px;
 }
 
 #newPostButton {
@@ -212,25 +214,80 @@ h2 {
 	display: none;
 }
 
-ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-}
 
-#login-form {
-	width:300px;
+
+
+
+
+.RegisterOrLogin {
+	width:600px;
 	height:200px;
-	margin:0 auto;
 	text-align:center;
-	top: 50%;
-	margin-left: -150px;
-	margin-top: -100px;
-	left: 50%;
-	position:absolute;
+
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	padding: 20px;
+	background-color: rgba(0,0,0,.75);
+
+	border: 1px solid white;
+	border-radius: 100px;
+
+	z-index: 10000;
+
+	/*display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;*/
 }
 
-#register-form, #login-form{
+.registerProject {
+	margin:10px;
+	position fixed;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.StartProjectButton {
+
+
+}
+
+
+.buttonCloseWindow {
+	position: relative;
+	background-color: red;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 3px 6px;
+	margin: 3px 0px 3px 7px;
+	text-align: center;
+	display: inline-block;
+	font-size: 10px;
+	cursor: pointer;
+	outline: 0;
+	text-decoration: none;
+}
+
+.buttonCloseWindow:active {
+	-webkit-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	-moz-box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+	box-shadow: 0px 0px 9px 2px rgba(255,0,0,1);
+}
+
+
+
+
+
+
+/*.RegisterOrLogin{
 	width:500px;
 	height:200px;
 	margin:0 auto;
@@ -240,7 +297,7 @@ ul {
 	margin-top: -100px;
 	left: 50%;
 	position:absolute;
-}
+}*/
 
 .userNameForm, .PasswordForm {
 	background-color: transparent;

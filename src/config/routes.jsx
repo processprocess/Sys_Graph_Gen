@@ -13,11 +13,16 @@ const Routes = () => {
       {/* <Route path="/" component={App}> */}
       <Route path="/" component={Main}>
         <IndexRoute component={App} />
-        <Route path="/register" components={{App: App, RegisterOrLogin: Register}} />
-        {/* <Route path="/register" component={Register} > */}
-        <Route path="/login" components={{App: App, RegisterOrLogin: Login}} />
-        {/* <Route path="login" component={Login} /> */}
+
+        {/* <Route path="/register"/>
+        <Route path="/login"/> */}
+        {/* <Route path="/register" components={{App: App, RegisterOrLogin: Register}} />
+        <Route path="/login" components={{App: App, RegisterOrLogin: Login}} /> */}
         <Route path="App" component={App} />
+
+
+        {/* <Route path="/register" component={Register} > */}
+        {/* <Route path="login" component={Login} /> */}
         {/* <Route path="App" component={App} onEnter={requireAuth}/> */}
         {/* refresh page without forcing login */}
       </Route>

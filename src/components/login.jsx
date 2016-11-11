@@ -38,18 +38,16 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div id="login-form">
-          <div>
-            <h2>Systematic Graphic Generator</h2>
-            <p>How might strings and numbers be manipulated in React?<br/></p>
-            <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
-          </div>
-          {/* <div>
-            <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
-          </div> */}
-          <button className="btn" onClick={this.handleSubmit}>Login</button>
+      <div className="RegisterOrLogin">
+        <div>
+          <h2>Systematic Graphic Generator</h2>
+          <p>How might strings and numbers be manipulated in React?<br/></p>
+          <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
         </div>
+        {/* <div>
+          <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
+        </div> */}
+        <button className="btn" onClick={this.handleSubmit}>Login</button>
       </div>
     );
   }

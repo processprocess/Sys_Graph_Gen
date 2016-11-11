@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import firebase from '../../firebase.config.js';
 import { withRouter } from 'react-router'
 
-class Register extends Component {
+export default class Register extends Component {
   constructor() {
     super();
     this.state = {
@@ -45,24 +45,25 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        {/* <h2>systematic graphic generator</h2> */}
-        <div id="register-form">
-          <div>
-            <h2>Systematic Graphic Generator</h2>
-            <p>How might strings and numbers be manipulated in React?<br/></p>
-            <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
-          </div>
-          {/* <div>
-            <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
-          </div> */}
-          <button className="btn" onClick={this.handleSubmit}>Register</button>
+      <div className="RegisterOrLogin">
+        <div>
+          <p className='registerProject'>Name Your Project</p>
+          {/* <p>Remember it so you can look at it later<br /></p> */}
+          <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
         </div>
+        {/* <div>
+          <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
+        </div> */}
+        <button className="StartProjectButton" onClick={this.handleSubmit}>Start Project!</button>
+        <button a href="/" className="buttonDelete"> <a href="/" >Close This Window</a></button>
+        {/* <a href="/" CloseWindowButton>Sign Out</a> */}
       </div>
     );
   }
 }
 
-export default withRouter(Register)
 
-// export default Register;
+
+
+
+//

@@ -88,11 +88,9 @@ class Main extends Component {
     return (
       <div>
         <div id="main-nav">
-          {/* <h1 id="mainHeader">SYS/GRAF/GEN</h1> */}
-          {/* <p>systematic graphic generator</p> */}
-          {
-            this.loggedInLinks()
-          }
+
+            {/* this.loggedInLinks() */}
+
         </div>
         <div id="main-content">
           {this.props.children}
