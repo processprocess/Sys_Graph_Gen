@@ -52,7 +52,7 @@ h2 {
   position:relative;
 	z-index: 10;
 	font-size: 12px;
-	opacity: 0.1;
+	opacity: 0.2;
 	transition: opacity .25s ease-in-out;
 	-moz-transition: opacity .25s ease-in-out;
 	-webkit-transition: opacity .25s ease-in-out;
@@ -79,7 +79,7 @@ h2 {
 	border-radius: 10px;
 	color: white;
 	padding: 3px 6px;
-	margin: 3px 7px;
+	margin: 3px 0px 3px 7px;
 	text-align: center;
 	/*text-decoration: none;*/
 	display: inline-block;
@@ -95,6 +95,7 @@ h2 {
 }
 
 .buttonAddRow{
+	/*width: 62px;*/
 	position: relative;
 	background-color: green;
 	border: none;

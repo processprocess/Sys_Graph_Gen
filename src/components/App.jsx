@@ -15,6 +15,7 @@ export default class App extends React.Component {
     this.httpPublishPost = this.httpPublishPost.bind(this);
     this.httpDeletePost = this.httpDeletePost.bind(this);
   }
+
   componentDidMount() {
     this.getUser()
     setTimeout(() => {
@@ -28,6 +29,12 @@ export default class App extends React.Component {
         this.setState({
           currentUser: user.uid,
         });
+        let userEmail = user.email
+        let userName = userEmail.replace('@test.com', '');
+        this.setState({
+          userName: userName,
+        });
+        console.log(this.state.userName);
       }
     });
   }
@@ -88,7 +95,7 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="systemHeader">
-          <h3>sys-graph-gen</h3>
+          <h3>sys-graph-gen {this.state.userName}</h3>
         </div>
         <PostList handleDelete={this.httpDeletePost}
                   handlePublish={this.handlePublish}

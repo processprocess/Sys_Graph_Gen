@@ -7,6 +7,7 @@ export default class PostList extends React.Component {
       return (
         <div key={idx}>
           <Post
+            keyIndex={idx}
             handleDelete={this.props.handleDelete}
             handlePublish={this.props.handlePublish}
             ElBackgroundColor={post.ElBackgroundColor}

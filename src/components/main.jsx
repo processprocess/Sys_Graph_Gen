@@ -84,6 +84,7 @@ class Main extends Component {
   }
 
   render() {
+    const { App, RegisterOrLogin } = this.props
     return (
       <div>
         <div id="main-nav">
@@ -96,6 +97,14 @@ class Main extends Component {
         <div id="main-content">
           {this.props.children}
         </div>
+
+        <div>
+          {App}
+        </div>
+        <div>
+          {RegisterOrLogin}
+        </div>
+
       </div>
     );
   }

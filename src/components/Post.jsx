@@ -16,6 +16,7 @@ export default class Post extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleLineClick = this.handleLineClick.bind(this);
     this.handleDelLineClick = this.handleDelLineClick.bind(this);
+    this.randomStyle = this.randomStyle.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,6 +60,26 @@ export default class Post extends React.Component {
 
   handleDeleteClick() {
     this.props.RowCount > 1 ? this.props.handleDelete(this.props.id) : null;
+  }
+
+  randomStyle(){
+    let colorArray = ['black', 'white', 'red', 'blue', 'yellow', 'purple', 'orange']
+    let randomElBorderWidth = Math.floor((Math.random() * 40) + 1);
+    let randomElBackgroundColor = this.props.keyIndex == 0 ? colorArray[Math.floor((Math.random() * colorArray.length) + 1)]:colorArray[Math.floor((Math.random() * colorArray.length) + 0)];
+    let randomLineCount = randomElBorderWidth > 10 ? Math.floor((Math.random() * 10) + 1) : Math.floor((Math.random() * 100) + 20);
+    this.setState({
+      localElBorderWidth: randomElBorderWidth,
+      localElBackgroundColor: randomElBackgroundColor,
+      LineCount: randomLineCount,
+    });
+    setTimeout(function() {
+      this.props.handlePublish({
+        id: this.props.id,
+        ElBorderWidth: this.state.localElBorderWidth,
+        ElBackgroundColor: this.state.localElBackgroundColor,
+        LineCount: this.state.LineCount,
+      });
+    }.bind(this), 10);
   }
 
   // handleLineClick(e) {
@@ -137,8 +158,8 @@ export default class Post extends React.Component {
       }
 
       let colorSelectStyle = {
-        	color: this.props.ElBackgroundColor,
-          // color: 'blue',
+        	color: this.props.ElBackgroundColor == 'black' ? 'grey' : this.props.ElBackgroundColor,
+        	// color: this.props.ElBackgroundColor,
       }
 
       return (
@@ -147,6 +168,7 @@ export default class Post extends React.Component {
       {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
+        <button className="buttonAddRow" onClick={this.randomStyle}>Random Style</button>
 
           <div className='postButtonHolder'>
             {this.props.LineCount + ' lines'}
@@ -171,7 +193,7 @@ export default class Post extends React.Component {
           </div>
 
           <div className='postButtonHolder' >
-            <select className="buttonColorSelector" style={colorSelectStyle} defaultValue={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor}>
+            <select className="buttonColorSelector" style={colorSelectStyle} value={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor}>
               <option value="white">white</option>
               <option value="red">red</option>
               <option value="blue">blue</option>
@@ -183,6 +205,7 @@ export default class Post extends React.Component {
           </div>
 
           <button className='buttonDelete' onClick={this.handleDeleteClick}>delete row</button>
+          <button className="buttonAddRow" onClick={this.props.handlePublish}>New Row</button>
         </div>
 
         <div className="LineHolder">
