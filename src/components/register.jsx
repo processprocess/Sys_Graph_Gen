@@ -9,7 +9,7 @@ class Register extends Component {
     super();
     this.state = {
       username: '',
-      password: '',
+      password: 'NOPASSREQUIRED',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,11 +23,12 @@ class Register extends Component {
   }
 
   handleSubmit() {
-    const { username, password } = this.state;
+    const { username , password } = this.state;
     firebase.auth()
-      .createUserWithEmailAndPassword(username, password)
+      .createUserWithEmailAndPassword(`${username}@test.com`, password)
       .catch((err) => {
         console.log(err);
+        console.log(this.params);
       })
       .then((user) => {
         firebase.database().ref('users')
@@ -50,9 +51,9 @@ class Register extends Component {
             <p>How might strings and numbers be manipulated in React?<br/></p>
             <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
-          <div>
+          {/* <div>
             <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
-          </div>
+          </div> */}
           <button className="btn" onClick={this.handleSubmit}>Register</button>
         </div>
       </div>

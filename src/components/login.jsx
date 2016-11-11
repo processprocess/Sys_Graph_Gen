@@ -9,7 +9,7 @@ class Login extends Component {
     super();
     this.state = {
       username: '',
-      password: '',
+      password: 'NOPASSREQUIRED',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +25,7 @@ class Login extends Component {
   handleSubmit() {
     const { username, password } = this.state;
     firebase.auth()
-      .signInWithEmailAndPassword(username, password)
+      .signInWithEmailAndPassword(`${username}@test.com`, password)
       .catch((err) => {
         const errorCode = err.code;
         const errorMessage = err.message;
@@ -45,9 +45,9 @@ class Login extends Component {
             <p>How might strings and numbers be manipulated in React?<br/></p>
             <input className="userNameForm" name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
-          <div>
+          {/* <div>
             <input className="PasswordForm" name="password" onChange={this.handleChange} type="password" placeholder="password" />
-          </div>
+          </div> */}
           <button className="btn" onClick={this.handleSubmit}>Login</button>
         </div>
       </div>

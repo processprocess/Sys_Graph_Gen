@@ -247,11 +247,21 @@ ul {
 }
 
 #enterLinks {
+	position:fixed;
+	right: 0;
+	/*float: right;*/
+	padding:10px;
+	color: white;
+	text-decoration: none;
+	z-index: 10000;
+}
+
+/*#enterLinks {
 	text-align: center;
 	padding:10px;
 	color: white;
 	text-decoration: none;
-}
+}*/
 
 #login {
 	text-align: center;
@@ -261,7 +271,7 @@ ul {
 }
 
 #login:hover {
-	color: red;
+	color: green;
 }
 
 #register {
@@ -272,7 +282,7 @@ ul {
 }
 
 #register:hover {
-	color: red;
+	color: green;
 }
 
 #sign-out {
