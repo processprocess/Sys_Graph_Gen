@@ -141,6 +141,7 @@ export default class Post extends React.Component {
       for (let i = 0 ; i < 2 ; i ++) {
           linesReflectArray.push(
             <div key = {i} className = 'debugBox'>
+            {/* <div key = {i} className = 'debugBox'> */}
               <LineButton
                 // key = {i}
                 ElBackgroundColor={this.props.ElBackgroundColor}
@@ -208,6 +209,7 @@ export default class Post extends React.Component {
           <button className="buttonAddRow" onClick={this.props.handlePublish}>New Row</button>
         </div>
 
+        {/* <div> */}
         <div className="LineHolder">
           {linesReflectArray}
         </div>

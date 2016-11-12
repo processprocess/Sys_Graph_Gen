@@ -20,7 +20,13 @@ export default class LineButton extends React.Component {
     `@-webkit-keyframes ${rotateAnimation} {
       0%   {transform:rotate(0deg);}
       100% {transform:rotate(${this.props.RotationDirection}360deg);}
-    }`;
+    }`
+    // `@keyframes ${rotateAnimation} {
+    //   0%   {transform:rotate(0deg);}
+    //   100% {transform:rotate(${this.props.RotationDirection}360deg);}
+    // }`
+
+    ;
     styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
     this.setState({
       rotateAnimation: rotateAnimation
@@ -41,10 +47,27 @@ export default class LineButton extends React.Component {
     }
 
     let divStyle = {
+      webkitAnimationName: this.state.rotateAnimation ,
+      webkitAnimationDuration: this.props.ElAnimationDuration + 's',
+      webkitAnimationTimingFunction: 'linear',
+      webkitAnimationIterationCount: 'infinite',
+
+      mozAnimationName: this.state.rotateAnimation ,
+      mozAnimationDuration: this.props.ElAnimationDuration + 's',
+      mozAnimationTimingFunction: 'linear',
+      mozAnimationIterationCount: 'infinite',
+
+      oAnimationName: this.state.rotateAnimation ,
+      oAnimationDuration: this.props.ElAnimationDuration + 's',
+      oAnimationTimingFunction: 'linear',
+      oAnimationIterationCount: 'infinite',
+
       animationName: this.state.rotateAnimation ,
       animationDuration: this.props.ElAnimationDuration + 's',
       animationTimingFunction: 'linear',
       animationIterationCount: 'infinite',
+
+      width: '100%',
       // border: '1px solid red'
     }
 
