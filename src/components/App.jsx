@@ -95,7 +95,7 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="systemHeader">
-          <h3>sys-graph-gen {this.state.userName}</h3>
+          <h3>sys-graph-gen<span className="version">v1</span> {this.state.userName}</h3>
         </div>
         <PostList handleDelete={this.httpDeletePost}
                   handlePublish={this.handlePublish}
