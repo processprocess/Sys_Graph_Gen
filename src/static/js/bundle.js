@@ -30507,9 +30507,8 @@
 	        animationName: this.state.rotateAnimation,
 	        animationDuration: this.props.ElAnimationDuration + 's',
 	        animationTimingFunction: 'linear',
-	        animationIterationCount: 'infinite',
+	        animationIterationCount: 'infinite'
 	
-	        width: '100%'
 	      };
 	
 	      return _react2.default.createElement(
@@ -30567,7 +30566,8 @@
 	      var divStyle = {
 	        height: this.props.ElBorderWidth + 'px',
 	        backgroundColor: this.props.ElBackgroundColor,
-	        marginTop: this.props.ElBorderWidth + 'px'
+	        marginTop: this.props.ElBorderWidth + 'px',
+	        width: '200vw'
 	      };
 	      return _react2.default.createElement('div', { style: divStyle });
 	    }
