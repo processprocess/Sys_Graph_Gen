@@ -28409,7 +28409,13 @@
 	          _react2.default.createElement(
 	            'h3',
 	            null,
-	            'sys-graph-gen ',
+	            'sys-graph-gen',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'version' },
+	              'v1'
+	            ),
+	            ' ',
 	            this.state.userName
 	          )
 	        ),
