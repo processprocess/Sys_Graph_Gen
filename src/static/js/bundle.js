@@ -21480,9 +21480,7 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: _main2.default },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'register', component: _register2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _login2.default }),
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _App2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'App', component: _App2.default })
 	    )
 	  );
@@ -27189,6 +27187,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // This will be our Main component, it will render all of the child components, it will also know if the user is logged in by saving it to state.
 	
+	// import { withRouter } from 'react-router';
+	
 	var propTypes = {
 	  children: _react2.default.PropTypes.element.isRequired
 	};
@@ -27218,7 +27218,6 @@
 	        _firebaseConfig2.default.auth().onAuthStateChanged(function (user) {
 	          _this2.setState({
 	            loggedIn: user !== null
-	
 	          });
 	          // this.getUser();
 	        });
@@ -27278,7 +27277,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'a',
-	            { href: '#', id: 'sign-out', onClick: this.signOut },
+	            { href: '/', id: 'sign-out', onClick: this.signOut },
 	            'Sign Out'
 	          )
 	        );
@@ -27287,18 +27286,28 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props;
+	      var App = _props.App;
+	      var RegisterOrLogin = _props.RegisterOrLogin;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'main-nav' },
-	          this.loggedInLinks()
-	        ),
+	        _react2.default.createElement('div', { id: 'main-nav' }),
 	        _react2.default.createElement(
 	          'div',
 	          { id: 'main-content' },
 	          this.props.children
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          App
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          RegisterOrLogin
 	        )
 	      );
 	    }
@@ -28032,7 +28041,7 @@
 	
 	    _this.state = {
 	      username: '',
-	      password: ''
+	      password: 'NOPASSREQUIRED'
 	    };
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -28056,11 +28065,13 @@
 	      var username = _state.username;
 	      var password = _state.password;
 	
-	      _firebaseConfig2.default.auth().createUserWithEmailAndPassword(username, password).catch(function (err) {
+	      _firebaseConfig2.default.auth().createUserWithEmailAndPassword(username + '@test.com', password).catch(function (err) {
 	        console.log(err);
+	        console.log(_this2.params);
 	      }).then(function (user) {
 	        _firebaseConfig2.default.database().ref('users').child(user.uid).set({ first_name: '', last_name: '', email: username });
 	      }).then(function () {
+	        // this.props.router.push('/#')
 	        _this2.props.router.push('/App');
 	      });
 	    }
@@ -28069,35 +28080,30 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'RegisterOrLogin' },
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'register-form' },
+	          null,
 	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Systematic Graphic Generator'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'How might strings and numbers be manipulated in React?',
-	              _react2.default.createElement('br', null)
-	            ),
-	            _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	            'p',
+	            { className: 'registerProject' },
+	            'Name Your Project'
 	          ),
+	          _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'StartProjectButton', onClick: this.handleSubmit },
+	          'Start Project!'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { a: true, href: '/', className: 'buttonDelete' },
+	          ' ',
 	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement('input', { className: 'PasswordForm', name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'btn', onClick: this.handleSubmit },
-	            'Register'
+	            'a',
+	            { href: '/' },
+	            'Close This Window'
 	          )
 	        )
 	      );
@@ -28107,9 +28113,10 @@
 	  return Register;
 	}(_react.Component);
 	
-	exports.default = (0, _reactRouter.withRouter)(Register);
+	//
 	
-	// export default Register;
+	
+	exports.default = Register;
 
 /***/ },
 /* 245 */
@@ -28151,7 +28158,7 @@
 	
 	    _this.state = {
 	      username: '',
-	      password: ''
+	      password: 'NOPASSREQUIRED'
 	    };
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -28175,7 +28182,7 @@
 	      var username = _state.username;
 	      var password = _state.password;
 	
-	      _firebaseConfig2.default.auth().signInWithEmailAndPassword(username, password).catch(function (err) {
+	      _firebaseConfig2.default.auth().signInWithEmailAndPassword(username + '@test.com', password).catch(function (err) {
 	        var errorCode = err.code;
 	        var errorMessage = err.message;
 	        console.log(err);
@@ -28188,36 +28195,27 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'RegisterOrLogin' },
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'login-form' },
+	          null,
 	          _react2.default.createElement(
-	            'div',
+	            'h2',
 	            null,
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Systematic Graphic Generator'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'How might strings and numbers be manipulated in React?',
-	              _react2.default.createElement('br', null)
-	            ),
-	            _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	            'Systematic Graphic Generator'
 	          ),
 	          _react2.default.createElement(
-	            'div',
+	            'p',
 	            null,
-	            _react2.default.createElement('input', { className: 'PasswordForm', name: 'password', onChange: this.handleChange, type: 'password', placeholder: 'password' })
+	            'How might strings and numbers be manipulated in React?',
+	            _react2.default.createElement('br', null)
 	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'btn', onClick: this.handleSubmit },
-	            'Login'
-	          )
+	          _react2.default.createElement('input', { className: 'userNameForm', name: 'username', onChange: this.handleChange, type: 'text', placeholder: 'username' })
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn', onClick: this.handleSubmit },
+	          'Login'
 	        )
 	      );
 	    }
@@ -28308,7 +28306,12 @@
 	          _this3.setState({
 	            currentUser: user.uid
 	          });
-	          console.log(_this3.state.currentUser);
+	          var userEmail = user.email;
+	          var userName = userEmail.replace('@test.com', '');
+	          _this3.setState({
+	            userName: userName
+	          });
+	          console.log(_this3.state.userName);
 	        }
 	      });
 	    }
@@ -28318,11 +28321,8 @@
 	      var _this4 = this;
 	
 	      var url = 'https://crudtest-342a3.firebaseio.com/posts/' + this.state.currentUser + '.json';
-	      // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts.json`;
-	      // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
 	      _superagent2.default.get(url).then(function (response) {
 	        var postsData = response.body;
-	
 	        var posts = [];
 	        if (postsData) {
 	          posts = Object.keys(postsData).map(function (id) {
@@ -28332,10 +28332,11 @@
 	              ElBackgroundColor: individualPostData.ElBackgroundColor,
 	              ElBorderWidth: individualPostData.ElBorderWidth,
 	              ElAnimationDuration: individualPostData.ElAnimationDuration,
-	              content: individualPostData.content,
 	              LineCount: individualPostData.LineCount
 	            };
 	          });
+	        } else {
+	          _this4.handlePublish({});
 	        }
 	        _this4.setState({ posts: posts });
 	      });
@@ -28344,16 +28345,15 @@
 	    key: 'handlePublish',
 	    value: function handlePublish(_ref) {
 	      var id = _ref.id;
-	      var content = _ref.content;
 	      var ElBackgroundColor = _ref.ElBackgroundColor;
 	      var ElAnimationDuration = _ref.ElAnimationDuration;
 	      var ElBorderWidth = _ref.ElBorderWidth;
 	      var LineCount = _ref.LineCount;
 	
 	      if (id) {
-	        this.httpUpdatePost({ id: id, content: content, ElBackgroundColor: ElBackgroundColor, ElAnimationDuration: ElAnimationDuration, ElBorderWidth: ElBorderWidth, LineCount: LineCount });
+	        this.httpUpdatePost({ id: id, ElBackgroundColor: ElBackgroundColor, ElAnimationDuration: ElAnimationDuration, ElBorderWidth: ElBorderWidth, LineCount: LineCount });
 	      } else {
-	        this.httpPublishPost({ content: content, ElBackgroundColor: ElBackgroundColor, ElAnimationDuration: ElAnimationDuration, ElBorderWidth: ElBorderWidth, LineCount: LineCount });
+	        this.httpPublishPost({ ElBackgroundColor: 'white', ElAnimationDuration: 100, ElBorderWidth: 7, LineCount: 7 });
 	      }
 	    }
 	  }, {
@@ -28362,8 +28362,6 @@
 	      var _this5 = this;
 	
 	      var url = 'https://crudtest-342a3.firebaseio.com/posts/' + this.state.currentUser + '/' + id + '.json';
-	      // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
-	      // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
 	      _superagent2.default.del(url).then(function () {
 	        _this5.httpGetPosts();
 	      });
@@ -28374,16 +28372,13 @@
 	      var _this6 = this;
 	
 	      var id = _ref2.id;
-	      var content = _ref2.content;
 	      var ElBackgroundColor = _ref2.ElBackgroundColor;
 	      var ElBorderWidth = _ref2.ElBorderWidth;
 	      var ElAnimationDuration = _ref2.ElAnimationDuration;
 	      var LineCount = _ref2.LineCount;
 	
 	      var url = 'https://crudtest-342a3.firebaseio.com/posts/' + this.state.currentUser + '/' + id + '.json';
-	      // const url = `https://crudtest-342a3.firebaseio.com/${this.state.currentUser}/posts/${id}.json`;
-	      // const url = `https://crudtest-342a3.firebaseio.com/posts/${id}.json`;
-	      _superagent2.default.patch(url).send({ content: content, ElBackgroundColor: ElBackgroundColor, ElBorderWidth: ElBorderWidth, ElAnimationDuration: ElAnimationDuration, LineCount: LineCount }).then(function () {
+	      _superagent2.default.patch(url).send({ ElBackgroundColor: ElBackgroundColor, ElBorderWidth: ElBorderWidth, ElAnimationDuration: ElAnimationDuration, LineCount: LineCount }).then(function () {
 	        _this6.httpGetPosts();
 	      });
 	    }
@@ -28392,14 +28387,13 @@
 	    value: function httpPublishPost(_ref3) {
 	      var _this7 = this;
 	
-	      var content = _ref3.content;
 	      var ElBackgroundColor = _ref3.ElBackgroundColor;
 	      var ElBorderWidth = _ref3.ElBorderWidth;
 	      var ElAnimationDuration = _ref3.ElAnimationDuration;
+	      var LineCount = _ref3.LineCount;
 	
 	      var url = 'https://crudtest-342a3.firebaseio.com/posts/' + this.state.currentUser + '.json';
-	      // const url = 'https://crudtest-342a3.firebaseio.com/posts.json';
-	      _superagent2.default.post(url).send({ content: content, ElBackgroundColor: ElBackgroundColor, ElBorderWidth: ElBorderWidth, ElAnimationDuration: ElAnimationDuration, LineCount: 0 }).then(function () {
+	      _superagent2.default.post(url).send({ ElBackgroundColor: ElBackgroundColor, ElBorderWidth: ElBorderWidth, ElAnimationDuration: ElAnimationDuration, LineCount: LineCount }).then(function () {
 	        _this7.httpGetPosts();
 	      });
 	    }
@@ -28408,20 +28402,24 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'wrapper1' },
+	          { className: 'systemHeader' },
 	          _react2.default.createElement(
-	            'div',
-	            { id: 'header' },
-	            _react2.default.createElement(
-	              'button',
-	              { id: 'newPostButton', onClick: this.handlePublish },
-	              'New Row'
-	            )
-	          ),
-	          _react2.default.createElement(_PostList2.default, { handleDelete: this.httpDeletePost, handlePublish: this.handlePublish, posts: this.state.posts })
+	            'h3',
+	            null,
+	            'sys-graph-gen ',
+	            this.state.userName
+	          )
+	        ),
+	        _react2.default.createElement(_PostList2.default, { handleDelete: this.httpDeletePost,
+	          handlePublish: this.handlePublish,
+	          posts: this.state.posts }),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'postControls buttonAddRow', onClick: this.handlePublish },
+	          'New Row'
 	        )
 	      );
 	    }
@@ -28430,16 +28428,10 @@
 	  return App;
 	}(_react2.default.Component);
 	
-	exports.default = App;
-	
-	//background color
-	//set speed
-	//set width
-	//set direction
-	//make entire block rotate
-	
-	
 	//
+	
+	
+	exports.default = App;
 
 /***/ },
 /* 247 */
@@ -30071,29 +30063,25 @@
 	
 	      var postElements = this.props.posts.map(function (post, idx) {
 	        return _react2.default.createElement(
-	          'li',
+	          'div',
 	          { key: idx },
 	          _react2.default.createElement(_Post2.default, {
+	            keyIndex: idx,
 	            handleDelete: _this2.props.handleDelete,
 	            handlePublish: _this2.props.handlePublish,
-	            content: post.content,
 	            ElBackgroundColor: post.ElBackgroundColor,
 	            ElAnimationDuration: post.ElAnimationDuration,
 	            ElBorderWidth: post.ElBorderWidth,
 	            LineCount: post.LineCount,
+	            RowCount: _this2.props.posts.length,
 	            id: post.id
 	          })
 	        );
 	      });
-	      return (
-	
-	        //top controller for each
-	
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          postElements
-	        )
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        postElements
 	      );
 	    }
 	  }]);
@@ -30101,12 +30089,13 @@
 	  return PostList;
 	}(_react2.default.Component);
 	
-	exports.default = PostList;
-	
 	//move all buttons to top
 	
 	
 	//
+	
+	
+	exports.default = PostList;
 
 /***/ },
 /* 253 */
@@ -30130,6 +30119,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -30146,19 +30137,17 @@
 	
 	    _this.state = {
 	      localElBackgroundColor: _this.props.ElBackgroundColor || 'white',
-	      localElAnimationDuration: _this.props.ElAnimationDuration || 'speed',
-	      localElBorderWidth: _this.props.ElBorderWidth || 'width',
-	      localContent: _this.props.content || ''
+	      localElAnimationDuration: _this.props.ElAnimationDuration || '100',
+	      localElBorderWidth: _this.props.ElBorderWidth || '1',
+	      LineCount: _this.props.LineCount
 	    };
-	
 	    _this.handleEditOfElBackgroundColor = _this.handleEditOfElBackgroundColor.bind(_this);
-	    _this.handleEditOfElAnimationDuration = _this.handleEditOfElAnimationDuration.bind(_this);
-	    _this.handleEditOfElBorderWidth = _this.handleEditOfElBorderWidth.bind(_this);
-	    _this.handleEditOfContent = _this.handleEditOfContent.bind(_this);
+	    // this.handleEditOfElAnimationDuration = this.handleEditOfElAnimationDuration.bind(this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.handleDeleteClick = _this.handleDeleteClick.bind(_this);
 	    _this.handleLineClick = _this.handleLineClick.bind(_this);
-	    _this.handleDisLineClick = _this.handleDisLineClick.bind(_this);
+	    _this.handleDelLineClick = _this.handleDelLineClick.bind(_this);
+	    _this.randomStyle = _this.randomStyle.bind(_this);
 	    return _this;
 	  }
 	
@@ -30167,9 +30156,8 @@
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState({
 	        localElBackgroundColor: nextProps.ElBackgroundColor || 'white',
-	        localElAnimationDuration: nextProps.ElAnimationDuration || 'speed',
-	        localElBorderWidth: nextProps.ElBorderWidth || 'width',
-	        localContent: nextProps.content || ''
+	        localElAnimationDuration: nextProps.ElAnimationDuration || '100',
+	        localElBorderWidth: nextProps.ElBorderWidth || '1'
 	      });
 	    }
 	  }, {
@@ -30179,31 +30167,21 @@
 	      this.setState({
 	        localElBackgroundColor: newElBackgroundColor
 	      });
+	      setTimeout(function () {
+	        this.props.handlePublish({
+	          id: this.props.id,
+	          ElBackgroundColor: this.state.localElBackgroundColor
+	        });
+	      }.bind(this), 10);
 	    }
-	  }, {
-	    key: 'handleEditOfElAnimationDuration',
-	    value: function handleEditOfElAnimationDuration(e) {
-	      var newElAnimationDuration = e.target.value;
-	      this.setState({
-	        localElAnimationDuration: newElAnimationDuration
-	      });
-	    }
-	  }, {
-	    key: 'handleEditOfElBorderWidth',
-	    value: function handleEditOfElBorderWidth(e) {
-	      var newElBorderWidth = e.target.value;
-	      this.setState({
-	        localElBorderWidth: newElBorderWidth
-	      });
-	    }
-	  }, {
-	    key: 'handleEditOfContent',
-	    value: function handleEditOfContent(e) {
-	      var newContent = e.target.value;
-	      this.setState({
-	        localContent: newContent
-	      });
-	    }
+	
+	    // handleEditOfElAnimationDuration(e) {
+	    //   const newElAnimationDuration = e.target.value;
+	    //   this.setState({
+	    //     localElAnimationDuration: newElAnimationDuration,
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
@@ -30212,92 +30190,215 @@
 	        id: this.props.id,
 	        ElBackgroundColor: this.state.localElBackgroundColor,
 	        ElAnimationDuration: this.state.localElAnimationDuration,
-	        ElBorderWidth: this.state.localElBorderWidth,
-	        content: this.state.localContent
+	        ElBorderWidth: this.state.localElBorderWidth
 	      });
 	      this.setState({ saved: true });
 	    }
 	  }, {
 	    key: 'handleDeleteClick',
 	    value: function handleDeleteClick() {
-	      this.props.handleDelete(this.props.id);
+	      this.props.RowCount > 1 ? this.props.handleDelete(this.props.id) : null;
 	    }
+	  }, {
+	    key: 'randomStyle',
+	    value: function randomStyle() {
+	      var colorArray = ['black', 'white', 'red', 'blue', 'yellow', 'purple', 'orange'];
+	      var randomElBorderWidth = Math.floor(Math.random() * 40 + 1);
+	      var randomElBackgroundColor = this.props.keyIndex == 0 ? colorArray[Math.floor(Math.random() * colorArray.length + 1)] : colorArray[Math.floor(Math.random() * colorArray.length + 0)];
+	      var randomLineCount = randomElBorderWidth > 10 ? Math.floor(Math.random() * 10 + 1) : Math.floor(Math.random() * 100 + 20);
+	      this.setState({
+	        localElBorderWidth: randomElBorderWidth,
+	        localElBackgroundColor: randomElBackgroundColor,
+	        LineCount: randomLineCount
+	      });
+	      setTimeout(function () {
+	        this.props.handlePublish({
+	          id: this.props.id,
+	          ElBorderWidth: this.state.localElBorderWidth,
+	          ElBackgroundColor: this.state.localElBackgroundColor,
+	          LineCount: this.state.LineCount
+	        });
+	      }.bind(this), 10);
+	    }
+	
+	    // handleLineClick(e) {
+	    //   let localKey = e.target.value;
+	    //   let htmlTextContent = e.target.textContent;
+	    //   let localValueCount = eval('this.props.' + e.target.value);
+	    //   localValueCount = eval(localValueCount + htmlTextContent + 1)
+	    //   this.props.handlePublish({
+	    //     [localKey]: localValueCount,
+	    //     id: this.props.id,
+	    //     ElBackgroundColor: this.state.localElBackgroundColor,
+	    //     // ElAnimationDuration: this.state.localElAnimationDuration,
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'handleLineClick',
-	    value: function handleLineClick() {
-	      var localLineCount = this.props.LineCount;
-	      localLineCount += 1;
-	      this.props.handlePublish({
-	        LineCount: localLineCount,
-	        id: this.props.id,
-	        ElBackgroundColor: this.state.localElBackgroundColor,
-	        ElAnimationDuration: this.state.localElAnimationDuration,
-	        ElBorderWidth: this.state.localElBorderWidth,
-	        content: this.state.localContent
-	      });
+	    value: function handleLineClick(e) {
+	      var _props$handlePublish;
+	
+	      var localKey = e.target.value;
+	      // let htmlTextContent = e.target.textContent;
+	      var localValueCount = eval('this.props.' + e.target.value);
+	      localValueCount += 1;
+	      this.props.handlePublish((_props$handlePublish = {}, _defineProperty(_props$handlePublish, localKey, localValueCount), _defineProperty(_props$handlePublish, 'id', this.props.id), _defineProperty(_props$handlePublish, 'ElBackgroundColor', this.state.localElBackgroundColor), _props$handlePublish));
 	    }
 	  }, {
-	    key: 'handleDisLineClick',
-	    value: function handleDisLineClick() {
-	      var localLineCount = this.props.LineCount;
-	      localLineCount -= 1;
-	      this.props.handlePublish({
-	        LineCount: localLineCount,
-	        id: this.props.id,
-	        ElBackgroundColor: this.state.localElBackgroundColor,
-	        ElAnimationDuration: this.state.localElAnimationDuration,
-	        ElBorderWidth: this.state.ElBorderWidth,
-	        content: this.state.localContent
-	      });
+	    key: 'handleDelLineClick',
+	    value: function handleDelLineClick(e) {
+	      var _props$handlePublish2;
+	
+	      var localKey = e.target.value;
+	      // let htmlTextContent = e.target.textContent;
+	      var localValueCount = eval('this.props.' + e.target.value);
+	      localValueCount -= 1;
+	      this.props.handlePublish((_props$handlePublish2 = {}, _defineProperty(_props$handlePublish2, localKey, localValueCount), _defineProperty(_props$handlePublish2, 'id', this.props.id), _defineProperty(_props$handlePublish2, 'ElBackgroundColor', this.state.localElBackgroundColor), _props$handlePublish2));
 	    }
+	
+	    // handleBackgroundColorClick(e) {
+	    //   let localKey = e.target.value;
+	    //   // let htmlTextContent = e.target.textContent;
+	    //   let localValueCount = eval('this.props.' + e.target.value);
+	    //   // localValueCount -= 1;
+	    //   this.props.handlePublish({
+	    //     // [localKey]: localValueCount,
+	    //     id: this.props.id,
+	    //     ElBackgroundColor: this.state.localElBackgroundColor,
+	    //     // ElAnimationDuration: this.state.localElAnimationDuration,
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	
+	      var linesReflectArray = [];
+	      var RotationDirection = '+';
+	      for (var i = 0; i < 2; i++) {
+	        linesReflectArray.push(_react2.default.createElement(
+	          'div',
+	          { key: i, className: 'debugBox' },
+	          _react2.default.createElement(_LineButton2.default
+	          // key = {i}
+	          , { ElBackgroundColor: this.props.ElBackgroundColor,
+	            ElAnimationDuration: this.props.ElAnimationDuration,
+	            ElBorderWidth: this.props.ElBorderWidth,
+	            RotationDirection: RotationDirection
+	            // handleLineClick={this.handleLineClick}
+	            , LineCount: this.props.LineCount
+	          })
+	        ));
+	        RotationDirection = '-';
+	        //creates symmetry
+	        // RandomDistance -= RandomDistance*2;
+	      }
+	
+	      var colorSelectStyle = {
+	        color: this.props.ElBackgroundColor == 'black' ? 'grey' : this.props.ElBackgroundColor
+	      };
+	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'saved' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'postControls' },
-	          this.props.LineCount,
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: this.handleLineClick },
-	            '+'
+	            { className: 'buttonAddRow', onClick: this.randomStyle },
+	            'Random Style'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'postButtonHolder' },
+	            this.props.LineCount + ' lines',
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'buttonPluss', value: 'LineCount', onClick: this.handleLineClick },
+	              '+'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'buttonNegative', value: 'LineCount', onClick: this.handleDelLineClick },
+	              '-'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'postButtonHolder' },
+	            this.props.ElBorderWidth + ' border width',
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'buttonPluss', value: 'ElBorderWidth', onClick: this.handleLineClick },
+	              '+'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'buttonNegative', value: 'ElBorderWidth', onClick: this.handleDelLineClick },
+	              '-'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'postButtonHolder' },
+	            _react2.default.createElement(
+	              'select',
+	              { className: 'buttonColorSelector', style: colorSelectStyle, value: this.state.localElBackgroundColor, onChange: this.handleEditOfElBackgroundColor },
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'white' },
+	                'white'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'red' },
+	                'red'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'blue' },
+	                'blue'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'yellow' },
+	                'yellow'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'purple' },
+	                'purple'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'orange' },
+	                'orange'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'black' },
+	                'black'
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: this.handleDisLineClick },
-	            '-'
+	            { className: 'buttonDelete', onClick: this.handleDeleteClick },
+	            'delete row'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: this.handleDeleteClick },
-	            'x'
-	          ),
-	          _react2.default.createElement(
-	            'form',
-	            { className: 'changeProperty', onSubmit: this.handleSubmit },
-	            _react2.default.createElement('input', { className: 'editElementInput', type: 'text', placeholder: this.state.localElBackgroundColor, onChange: this.handleEditOfElBackgroundColor })
-	          ),
-	          _react2.default.createElement(
-	            'form',
-	            { className: 'changeProperty', onSubmit: this.handleSubmit },
-	            _react2.default.createElement('input', { className: 'editElementInput', type: 'text', placeholder: this.state.localElAnimationDuration, onChange: this.handleEditOfElAnimationDuration })
-	          ),
-	          _react2.default.createElement(
-	            'form',
-	            { className: 'changeProperty', onSubmit: this.handleSubmit },
-	            _react2.default.createElement('input', { className: 'editElementInput', type: 'text', placeholder: this.state.localElBorderWidth, onChange: this.handleEditOfElBorderWidth })
+	            { className: 'buttonAddRow', onClick: this.props.handlePublish },
+	            'New Row'
 	          )
 	        ),
-	        _react2.default.createElement(_LineButton2.default, {
-	          ElBackgroundColor: this.props.ElBackgroundColor,
-	          ElAnimationDuration: this.props.ElAnimationDuration,
-	          ElBorderWidth: this.props.ElBorderWidth,
-	          handleLineClick: this.handleLineClick,
-	          LineCount: this.props.LineCount
-	        })
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'LineHolder' },
+	          linesReflectArray
+	        )
 	      );
 	    }
 	  }]);
@@ -30305,9 +30406,10 @@
 	  return Post;
 	}(_react2.default.Component);
 	
-	exports.default = Post;
-	
 	//
+	
+	
+	exports.default = Post;
 
 /***/ },
 /* 254 */
@@ -30340,16 +30442,42 @@
 	var LineButton = function (_React$Component) {
 	  _inherits(LineButton, _React$Component);
 	
-	  function LineButton() {
+	  function LineButton(props) {
 	    _classCallCheck(this, LineButton);
 	
-	    return _possibleConstructorReturn(this, (LineButton.__proto__ || Object.getPrototypeOf(LineButton)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (LineButton.__proto__ || Object.getPrototypeOf(LineButton)).call(this, props));
+	
+	    _this.state = {
+	      rotateAnimation: ''
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(LineButton, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.componentWillReceiveProps();
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+	      var styleSheet = document.styleSheets[0];
+	      var rotateAnimation = 'rotateAnimation' + Math.round(Math.random() * 100);
+	      var keyframes = '@-webkit-keyframes ' + rotateAnimation + ' {\n      0%   {transform:rotate(0deg);}\n      100% {transform:rotate(' + this.props.RotationDirection + '360deg);}\n    }'
+	      // `@keyframes ${rotateAnimation} {
+	      //   0%   {transform:rotate(0deg);}
+	      //   100% {transform:rotate(${this.props.RotationDirection}360deg);}
+	      // }`
+	
+	      ;
+	      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+	      this.setState({
+	        rotateAnimation: rotateAnimation
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      // console.log(this.props.ElBackgroundColor)
 	      var LineElements = [];
 	      for (var i = 0; i < this.props.LineCount; i++) {
 	        LineElements.push(_react2.default.createElement(_ObjectRow2.default, {
@@ -30360,37 +30488,43 @@
 	        }));
 	      }
 	
-	      var rotateAnimation = document.styleSheets[document.styleSheets.length - 1];
-	      rotateAnimation.insertRule("@keyframes " + 'rotateAnimation' + " { 0% {transform:rotate(0deg);} 100% {transform:rotate(360deg);} }", 0);
-	
 	      var divStyle = {
-	        animationName: 'rotateAnimation',
+	        webkitAnimationName: this.state.rotateAnimation,
+	        webkitAnimationDuration: this.props.ElAnimationDuration + 's',
+	        webkitAnimationTimingFunction: 'linear',
+	        webkitAnimationIterationCount: 'infinite',
+	
+	        mozAnimationName: this.state.rotateAnimation,
+	        mozAnimationDuration: this.props.ElAnimationDuration + 's',
+	        mozAnimationTimingFunction: 'linear',
+	        mozAnimationIterationCount: 'infinite',
+	
+	        oAnimationName: this.state.rotateAnimation,
+	        oAnimationDuration: this.props.ElAnimationDuration + 's',
+	        oAnimationTimingFunction: 'linear',
+	        oAnimationIterationCount: 'infinite',
+	
+	        animationName: this.state.rotateAnimation,
 	        animationDuration: this.props.ElAnimationDuration + 's',
-	        // animationDuration: '20s',
-	        // animationDirection: 'linear',
 	        animationTimingFunction: 'linear',
-	        animationIterationCount: 'infinite'
+	        animationIterationCount: 'infinite',
+	
+	        width: '100%'
 	      };
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'theLines' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          this.props.LineCount
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { style: divStyle },
-	          LineElements
-	        )
+	        { style: divStyle },
+	        LineElements
 	      );
 	    }
 	  }]);
 	
 	  return LineButton;
 	}(_react2.default.Component);
+	
+	//
+	
 	
 	exports.default = LineButton;
 
@@ -30431,12 +30565,9 @@
 	    key: 'render',
 	    value: function render() {
 	      var divStyle = {
-	        width: '100%',
-	        display: 'inline-block',
-	        borderStyle: 'solid',
-	        // ElBorderWidth: this.props.ElBorderWidth + 'px',
-	        borderColor: this.props.ElBackgroundColor,
-	        borderWidth: this.props.ElBorderWidth + 'px'
+	        height: this.props.ElBorderWidth + 'px',
+	        backgroundColor: this.props.ElBackgroundColor,
+	        marginTop: this.props.ElBorderWidth + 'px'
 	      };
 	      return _react2.default.createElement('div', { style: divStyle });
 	    }
