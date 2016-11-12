@@ -7,6 +7,7 @@ export default class ObjectRow extends React.Component {
       height: this.props.ElBorderWidth + 'px',
       backgroundColor: this.props.ElBackgroundColor,
       marginTop: this.props.ElBorderWidth + 'px',
+      width: '200vw',
       // left: '-50%',
       // width: '200%',
     }

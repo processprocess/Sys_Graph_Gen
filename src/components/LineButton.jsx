@@ -67,7 +67,8 @@ export default class LineButton extends React.Component {
       animationTimingFunction: 'linear',
       animationIterationCount: 'infinite',
 
-      width: '100%',
+      
+      // width: '100%',
       // border: '1px solid red'
     }
 
