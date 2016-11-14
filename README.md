@@ -1,4 +1,4 @@
-# Project_2
+# Systematic Graphic Generator
 
 
 
