@@ -121,52 +121,30 @@ export default class Post extends React.Component {
     });
   }
 
-  // handleBackgroundColorClick(e) {
-  //   let localKey = e.target.value;
-  //   // let htmlTextContent = e.target.textContent;
-  //   let localValueCount = eval('this.props.' + e.target.value);
-  //   // localValueCount -= 1;
-  //   this.props.handlePublish({
-  //     // [localKey]: localValueCount,
-  //     id: this.props.id,
-  //     ElBackgroundColor: this.state.localElBackgroundColor,
-  //     // ElAnimationDuration: this.state.localElAnimationDuration,
-  //   });
-  // }
-
   render() {
-
       let linesReflectArray = []
       let RotationDirection = '+'
       for (let i = 0 ; i < 2 ; i ++) {
           linesReflectArray.push(
             <div key = {i} className = 'debugBox'>
-            {/* <div key = {i} className = 'debugBox'> */}
               <LineButton
-                // key = {i}
                 ElBackgroundColor={this.props.ElBackgroundColor}
                 ElAnimationDuration={this.props.ElAnimationDuration}
                 ElBorderWidth={this.props.ElBorderWidth}
                 RotationDirection={RotationDirection}
-                // handleLineClick={this.handleLineClick}
                 LineCount={this.props.LineCount}
               />
             </div>
           );
           RotationDirection = '-'
-          //creates symmetry
-          // RandomDistance -= RandomDistance*2;
       }
-
       let colorSelectStyle = {
         	color: this.props.ElBackgroundColor == 'black' ? 'grey' : this.props.ElBackgroundColor,
-        	// color: this.props.ElBackgroundColor,
       }
 
       return (
 
       <div>
-      {/* <div style={divStyle}></div> */}
 
         <div className="postControls">
         <button className="buttonAddRow" onClick={this.randomStyle}>Random Style</button>
@@ -193,6 +171,18 @@ export default class Post extends React.Component {
             <button className="buttonNegative" value='ElBorderWidth' onClick={this.handleDelLineClick}>-</button>
           </div>
 
+
+          <div className="postButtonHolder" >
+          {this.props.ElBorderWidth + ' border width'}
+            <input type="range"
+                   id="myRange"
+                   min="1"
+                   max="100"
+                   onChange={this.handleChange}>
+            </input>
+          </div>
+
+
           <div className='postButtonHolder' >
             <select className="buttonColorSelector" style={colorSelectStyle} value={this.state.localElBackgroundColor} onChange={this.handleEditOfElBackgroundColor}>
               <option value="white">white</option>
@@ -209,7 +199,6 @@ export default class Post extends React.Component {
           <button className="buttonAddRow" onClick={this.props.handlePublish}>New Row</button>
         </div>
 
-        {/* <div> */}
         <div className="LineHolder">
           {linesReflectArray}
         </div>
