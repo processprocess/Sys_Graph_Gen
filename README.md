@@ -2,7 +2,7 @@
 
 
 
-#### <a href= "http://philipbell.org/sysgraphgen/#/?_k=74f0fy" target= "_blank" > Live Demo </a>
+## <a href= "http://philipbell.org/sysgraphgen/#/?_k=74f0fy" target= "_blank" > Live Demo </a>
 
 ![alt tag](/AppScreenShot.png)
 ![alt tag](/AppScreenShot2.png)
